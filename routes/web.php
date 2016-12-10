@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('/frontend/index');
+    $submenu = TCG\Voyager\Models\MenuItem::where('menu_id', 4)->get();
+    $menus = TCG\Voyager\Models\MenuItem::where('menu_id', 3)->get();
+    return view('/frontend/index', ['submenu'=>$submenu, 'menus'=>$menus]);
 });
 
 Auth::routes();

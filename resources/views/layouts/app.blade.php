@@ -24,13 +24,9 @@
 		<!-- Top Menu -->
 		<nav id="top-menu" class="clearfix">
 			<ul class="no-bullet inline-list m0">
-				<li><a href="#">Shortcodes</a></li>
-				<li><a href="#">Portfolio</a></li>
-				<li><a href="#">Pages</a></li>
-				<li><a href="#">Links</a></li>
-				<li><a href="#">About us</a></li>
-				<li><a href="#">Admin options</a></li>
-				<li><a href="#">Documentation</a></li>
+				@foreach($submenu as $item)
+				<li><a href="{{$item->url}}">{{$item->title}}</a></li>
+				@endforeach
 			</ul>
 		</nav>
 		<!-- End Top Menu -->
@@ -46,8 +42,27 @@
 		</div>
 	</header>
 	<!-- End Header -->
-@yield('content')
+	<section class="container row clearfix">
+		<header class="clearfix">
+			<nav id="main-menu" class="left navigation">
+				<ul class="sf-menu no-bullet inline-list m0">
+					@foreach($menus as $menu)
+					<li><a href="{{$menu->url}}" class="">{{$menu->title}}</a></li>
+					@endforeach
+				</ul>
+			</nav>
 
+			<div class="search-bar right clearfix">
+				<form action="http://www.example.com">
+					<input name="s" type="text" data-value="search" value="search">
+					<input name="submit" type="submit" value="">
+				</form>
+			</div>
+		</header>
+
+@yield('content')
+</section>
+<!-- End Container -->
 	<script type="text/javascript" src="\assets\js\jquery.min.js"></script>
 	<script type="text/javascript" src="\assets\js\jquery.superfish.js"></script>
 	<script type="text/javascript" src="\assets\js\jquery.flexslider.min.js"></script>

@@ -2,57 +2,6 @@
 
 @section('content')
 	<!-- Container -->
-	<section class="container row clearfix">
-		<header class="clearfix">
-			<nav id="main-menu" class="left navigation">
-				<ul class="sf-menu no-bullet inline-list m0">
-					<li><a href="index-1.htm" class="active">Home</a></li>
-		    		<li><a href="#">Category</a>
-		    			<ul class="sub-menu">
-							<li><a href="blog-right-sidebar.htm">Right Sidebar</a></li>
-							<li><a href="blog-left-sidebar.htm">Left Sidebar</a></li>
-							<li><a href="blog-without-sidebar.htm">Without Sidebar</a></li>
-						</ul>
-		    		</li>
-		    		<li><a href="#">Single Post</a>
-		    			<ul class="sub-menu">
-							<li><a href="singlepost-right-sidebar.htm">Right Sidebar</a></li>
-							<li><a href="singlepost-left-sidebar.htm">Left Sidebar</a></li>
-							<li><a href="singlepost-without-sidebar.htm">Without Sidebar</a></li>
-						</ul>
-		    		</li>
-		    		<li><a href="#">Pages</a>
-		    			<ul class="sub-menu">
-							<li><a href="typography.htm">Typography</a></li>
-							<li><a href="video.htm">Videos</a></li>
-							<li><a href="404.htm">Error 404</a></li>
-							<li><a href="underconstruction.htm">Underconstruction</a></li>
-						</ul>
-		    		</li>
-		    		<li><a href="shortcodes.htm">Shortcodes</a></li>
-		    		<li><a href="#">Features</a>
-		    			<ul class="sub-menu">
-		    				<li><a href="gallery.htm">Gallery</a></li>
-							<li><a href="#">Videos</a>
-								<ul class="sub-menu">
-									<li><a href="youtube.htm">Youtube</a></li>
-									<li><a href="vimeo.htm">Vimeo</a></li>
-								</ul>
-							</li>
-						</ul>
-		    		</li>
-		    		<li><a href="contact.htm">Contact</a></li>
-				</ul>
-			</nav>
-
-			<div class="search-bar right clearfix">
-				<form action="http://www.example.com">
-					<input name="s" type="text" data-value="search" value="search">
-					<input name="submit" type="submit" value="">
-				</form>
-			</div>
-		</header>
-
 		<!-- Inner Container -->
 		<section class="inner-container clearfix">
 			<!-- Content -->
@@ -649,6 +598,4 @@
 			<!-- End Footer -->
 		</section>
 		<!-- End Inner Container -->
-	</section>
-	<!-- End Container -->
   @endsection
