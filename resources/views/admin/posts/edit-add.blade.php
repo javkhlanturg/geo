@@ -49,7 +49,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'New' }}@endif {{ $dataType->display_name_singular }}
+        <i class="{{ $dataType->icon }}"></i>{{ $dataType->display_name_singular }} @if(isset($dataTypeContent->id)){{ 'засах' }}@else{{ 'нэмэх' }}@endif
     </h1>
 @stop
 
@@ -63,22 +63,22 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="voyager-character"></i> Post Title
-                                <span class="panel-desc"> The title for your post</span>
+                                <i class="voyager-character"></i> Мэдээний гарчиг
+                                <span class="panel-desc"> Та энд мэдээний гарчигаа оруулна уу</span>
                             </h3>
                             <div class="panel-actions">
                                 <a class="panel-action icon wb-minus" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
-                            <input type="text" class="form-control" name="title" placeholder="Title" value="@if(isset($dataTypeContent->title)){{ $dataTypeContent->title }}@endif">
+                            <input type="text" class="form-control" name="title" placeholder="Гарчиг" value="@if(isset($dataTypeContent->title)){{ $dataTypeContent->title }}@endif">
                         </div>
                     </div>
 
                     <!-- ### CONTENT ### -->
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-book"></i> Post Content</h3>
+                            <h3 class="panel-title"><i class="icon wb-book"></i> Мэдээний агуулга</h3>
                             <div class="panel-actions">
                                 <a class="panel-action icon wb-expand" data-toggle="panel-fullscreen" aria-hidden="true"></a>
                             </div>
@@ -91,7 +91,7 @@
                     <!-- ### EXCERPT ### -->
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Excerpt <small>Small description of this post</small></h3>
+                            <h3 class="panel-title">Excerpt <small> мэдээний жижиг тайлбар</small></h3>
                             <div class="panel-actions">
                                 <a class="panel-action icon wb-minus" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -107,26 +107,25 @@
                     <!-- ### DETAILS ### -->
                     <div class="panel panel panel-bordered panel-warning">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-clipboard"></i> Post Details</h3>
+                            <h3 class="panel-title"><i class="icon wb-clipboard"></i> Мэдээний детайл</h3>
                             <div class="panel-actions">
                                 <a class="panel-action icon wb-minus" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label for="name">URL slug</label>
+                                <label for="name">Хаяг слаг</label>
                                 <input type="text" class="form-control" name="slug" placeholder="slug" value="@if(isset($dataTypeContent->slug)){{ $dataTypeContent->slug }}@endif">
                             </div>
                             <div class="form-group">
-                                <label for="name">Post Status</label>
+                                <label for="name">Мэдээний төлөв</label>
                                 <select class="form-control" name="status">
-                                    <option value="PUBLISHED" @if(isset($dataTypeContent->status) && $dataTypeContent->status == 'PUBLISHED'){{ 'selected="selected"' }}@endif>published</option>
-                                    <option value="DRAFT" @if(isset($dataTypeContent->status) && $dataTypeContent->status == 'DRAFT'){{ 'selected="selected"' }}@endif>draft</option>
-                                    <option value="PENDING" @if(isset($dataTypeContent->status) && $dataTypeContent->status == 'PENDING'){{ 'selected="selected"' }}@endif>pending</option>
+                                    <option value="PUBLISHED" @if(isset($dataTypeContent->status) && $dataTypeContent->status == 'PUBLISHED'){{ 'selected="selected"' }}@endif>Нийтлэх</option>
+                                    <option value="DRAFT" @if(isset($dataTypeContent->status) && $dataTypeContent->status == 'DRAFT'){{ 'selected="selected"' }}@endif>Драфтлах</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="name">Post Category</label>
+                                <label for="name">Мэдээний категори</label>
                                 <select class="form-control" name="category_id">
                                     @foreach(TCG\Voyager\Models\Category::all() as $category)
                                     <option value="{{ $category->id }}" @if(isset($dataTypeContent->category_id) && $dataTypeContent->category_id == $category->id){{ 'selected="selected"' }}@endif>{{ $category->name }}</option>
@@ -143,7 +142,7 @@
                     <!-- ### IMAGE ### -->
                     <div class="panel panel-bordered panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-image"></i> Post Image</h3>
+                            <h3 class="panel-title"><i class="icon wb-image"></i> Нүүрэнд харагдах зураг</h3>
                             <div class="panel-actions">
                                 <a class="panel-action icon wb-minus" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -193,7 +192,7 @@
             <!-- PUT Method if we are editing -->
 
             <button type="submit" class="btn btn-primary pull-right">
-                @if(isset($dataTypeContent->id)){{ 'Update Post' }}@else<?= '<i class="icon wb-plus-circle"></i> Create New Post'; ?>@endif
+                @if(isset($dataTypeContent->id)){{ 'Мэдээг засах' }}@else<?= '<i class="icon wb-plus-circle"></i> Мэдээг нэмэх'; ?>@endif
             </button>
         </form>
 

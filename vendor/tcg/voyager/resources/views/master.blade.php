@@ -161,7 +161,7 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
                         <li class="dropdown">
                             <a data-toggle="collapse" href="#tools-dropdown-element">
                                 <span class="icon voyager-tools"></span>
-                                <span class="title">Tools</span>
+                                <span class="title">Хэрэглсэлүүд</span>
                                 <span class="site-menu-arrow"></span>
                             </a>
 
@@ -171,13 +171,13 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
                                         <li>
                                             <a href="/{{config('voyager.routes.prefix')}}/menus">
                                                 <span class="icon voyager-list"></span>
-                                                <span class="title">Menu Builder</span>
+                                                <span class="title">Сайтын цэс builder</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="animsition-link" href="{{ route('voyager.database') }}">
                                                 <span class="icon voyager-data"></span>
-                                                <span class="title">Database</span>
+                                                <span class="title">Өгөгдлийн сан</span>
                                             </a>
                                         </li>
                                     </ul>

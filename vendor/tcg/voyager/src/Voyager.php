@@ -67,7 +67,11 @@ class Voyager
         return "Бүртгэх";
       if($slug==='media')
         return "Мэдиа";
+      if($slug==='database')
+        return "Өгөгдлийн сан";
       $datatype = DataType::where('slug', $slug)->first();
+      if(!$datatype)
+        return $slug;
       return $datatype->display_name_singular;
     }
 }
