@@ -262,7 +262,7 @@
                     @endif
                 @endforeach
             </div>
-            <button type="submit" class="btn btn-primary pull-right">Save Settings</button>
+            <button type="submit" class="btn btn-primary pull-right">Тохиргоог хадгалах</button>
         </form>
 
         <div style="clear:both"></div>
@@ -270,17 +270,17 @@
         <div class="panel" style="margin-top:10px;">
             <div class="panel-heading new-setting">
                 <hr>
-                <h3 class="panel-title"><i class="voyager-plus"></i> New Setting</h3>
+                <h3 class="panel-title"><i class="voyager-plus"></i> Тохиргоо нэмэх</h3>
             </div>
             <div class="panel-body">
                 <form action="{{ route('voyager.settings.create') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="col-md-4">
-                        <label for="display_name">Name</label>
+                        <label for="display_name">Харагдах нэр</label>
                         <input type="text" class="form-control" name="display_name">
                     </div>
                     <div class="col-md-4">
-                        <label for="key">Key</label>
+                        <label for="key">Түлхүүр</label>
                         <input type="text" class="form-control" name="key">
                     </div>
                     <div class="col-md-4">
