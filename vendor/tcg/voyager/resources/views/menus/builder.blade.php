@@ -6,8 +6,8 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-list"></i>Menu Builder ({{ $menu->name }})
-        <div class="btn btn-success add_item"><i class="voyager-plus"></i> New Menu Item</div>
+        <i class="voyager-list"></i>Цэс угсрах ({{ $menu->name }})
+        <div class="btn btn-success add_item"><i class="voyager-plus"></i> Шинэ цэс нэмэх</div>
     </h1>
 
 @stop
@@ -50,8 +50,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> Are you sure you want to delete this menu
-                        item?</h4>
+                    <h4 class="modal-title"><i class="voyager-trash"></i> Та энэ цэсийг устгахдаа итгэлтэй байна уу?</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('voyager.dashboard') }}/menu/delete_menu_item" id="delete_form"
@@ -59,9 +58,9 @@
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
-                               value="Yes, Delete This Menu Item">
+                               value="Тиймээ, энэ цэсийг устгана">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Болих</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -74,13 +73,13 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-plus"></i> Create a New Menu Item</h4>
+                    <h4 class="modal-title"><i class="voyager-plus"></i> Шинэ цэс үүсгэх</h4>
                 </div>
                 <form action="{{ route('voyager.menu.add_item') }}" id="delete_form" method="POST">
                     <div class="modal-body">
-                        <label for="name">Title of the Menu Item</label>
-                        <input type="text" class="form-control" name="title" placeholder="Title"><br>
-                        <label for="url">URL for the Menu Item</label>
+                        <label for="name">Цэсний нэршил</label>
+                        <input type="text" class="form-control" name="title" placeholder="Цэс"><br>
+                        <label for="url">Хандах хаяг</label>
                         <input type="text" class="form-control" name="url" placeholder="URL"><br>
                         <label for="icon_class">Font Icon class for the Menu Item (Use a <a
                                     href="{{ config('voyager.assets_path') . '/fonts/voyager/icons-reference.html' }}"
@@ -100,8 +99,8 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-success pull-right delete-confirm" value="Add New Item">
-                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-success pull-right delete-confirm" value="Цэс нэмэх">
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Болих</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
@@ -140,7 +139,7 @@
 
                     <div class="modal-footer">
                         <input type="submit" class="btn btn-success pull-right delete-confirm" value="Update">
-                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Болих</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
