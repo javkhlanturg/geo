@@ -136,7 +136,7 @@ body > header .inner-header {
 /* =  Container
 /*-------------------------------------------------*/
 .container {
-    max-width: 1400px;
+    max-width: 1170px;
     background: #fff;
     margin-bottom: 50px;
 }
@@ -146,7 +146,7 @@ body > header .inner-header {
 }
 
 .container .inner-container {
-    width: 960px;
+    width: 1140px;
     margin: 22.5px auto 0 auto;
 }
 
@@ -167,14 +167,14 @@ body > header .inner-header {
 
 #main-menu a {
     font-family: 'Oswald';
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
 }
 
 #main-menu > ul > li > a {
     display: block;
     color: #fff;
-    padding: 12px 15px;
+    padding: 12px 13px;
     border-right: 1px solid #000;
     line-height: normal;
 }
@@ -620,14 +620,14 @@ footer .widget-title {
 }
 
 #sidebar .widget {
-    width: 300px;
+    width: 360px;
 }
 
 /*-------------------------------------------------*/
 /* =  Tabs Widget
 /*-------------------------------------------------*/
 .tabs-widget {
-    width: 298px !important;
+    width: 358px !important;
     padding: 0px !important;
     border-top: none;
 }
@@ -638,7 +638,7 @@ footer .widget-title {
 
 .tabs-widget .tab-links li {
     float: left;
-    width: 97px;
+    width: 117px;
     margin-left: 4px;
     margin-bottom: -1px;
     background: #fff;
@@ -646,7 +646,7 @@ footer .widget-title {
 
 .tabs-widget .tab-links li:first-child {
     margin-left: 0px;
-    width: 96px;
+    width: 116px;
 }
 
 .tabs-widget .tab-links li a {
