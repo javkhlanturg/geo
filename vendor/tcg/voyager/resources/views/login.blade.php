@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="admin login">
     <meta name="author" content="">
-    <title>Admin Login</title>
+    <title>Admin нэвтрэх</title>
     {{-- Voyager CSS --}}
     <link rel="stylesheet" href="{{ config('voyager.assets_path') }}/css/voyager.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
@@ -215,7 +215,7 @@
                 <button class="btn btn-primary btn-login" id="voyager-login-btn">
                     <span class="login_text"><i class="voyager-lock"></i> Нэвтрэх</span>
                     <span class="login_loader">
-                        <img class="btn-loading" src="{{ config('voyager.assets_path') }}/images/logo-icon-light.png"> Logging in
+                        <img class="btn-loading" src="{{ config('voyager.assets_path') }}/images/logo-icon-light.png"> Нэвтэрж байна
                     </span>
                 </button>
             </form>
