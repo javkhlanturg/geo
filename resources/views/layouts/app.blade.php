@@ -46,9 +46,14 @@
 		</div>
 	</header>
 	<!-- End Header -->
+  <section class="container row clearfix">
 
+    @include('frontend.header')
+      <section class="inner-container clearfix">
 	@yield('content')
-
+  @include('frontend.footer')
+</section>
+</section>
 	<script type="text/javascript" src="\assets\js\jquery.min.js"></script>
 	<script type="text/javascript" src="\assets\js\jquery.superfish.js"></script>
 	<script type="text/javascript" src="\assets\js\jquery.flexslider.min.js"></script>
