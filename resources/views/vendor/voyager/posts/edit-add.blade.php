@@ -139,7 +139,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="name">Featured</label>
+                                <label for="name">Онцлох мэдээ</label>
                                 <input type="checkbox" name="featured" @if(isset($dataTypeContent->featured) && $dataTypeContent->featured){{ 'checked="checked"' }}@endif>
                             </div>
                         </div>
