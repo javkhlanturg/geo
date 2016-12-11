@@ -8,7 +8,7 @@ class PostController extends Controller
 {
     public function postList($slug){
       $menu = \TCG\Voyager\Models\MenuItem::where('menu_id', 2)->where('url', "/".$slug)->first();
-      $posts = \TCG\Voyager\Models\Category::where('slug', $slug)->first()->posts()->paginate(3);
+      $posts = \TCG\Voyager\Models\Category::where('slug', $slug)->first()->posts()->paginate(12);
       $newss = \TCG\Voyager\Models\Post::orderBy('created_at', 'desc')->limit('3')->get();
       return view("frontend.postlist", ['posts'=>$posts, 'menu'=>$menu, 'newss'=>$newss]);
     }

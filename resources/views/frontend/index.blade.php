@@ -412,7 +412,6 @@
           </aside>
           <!-- End Sidebar -->
           @include('frontend.footer')
-
         </section>
         <!-- End Inner Container -->
       </section>
