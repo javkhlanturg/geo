@@ -620,14 +620,14 @@ footer .widget-title {
 }
 
 #sidebar .widget {
-    width: 300px;
+    width: 350px;
 }
 
 /*-------------------------------------------------*/
 /* =  Tabs Widget
 /*-------------------------------------------------*/
 .tabs-widget {
-    width: 298px !important;
+    width: 348px !important;
     padding: 0px !important;
     border-top: none;
 }
@@ -638,7 +638,7 @@ footer .widget-title {
 
 .tabs-widget .tab-links li {
     float: left;
-    width: 97px;
+    width: 122px;
     margin-left: 4px;
     margin-bottom: -1px;
     background: #fff;
@@ -646,7 +646,8 @@ footer .widget-title {
 
 .tabs-widget .tab-links li:first-child {
     margin-left: 0px;
-    width: 96px;
+    width: 348px;
+    
 }
 
 .tabs-widget .tab-links li a {
@@ -807,16 +808,16 @@ li.widget_ads_small > ul {
 
 li.widget_ads_small li {
     float: left;
-    width: 142px;
-    height: 142px;
+    width: 169px;
+    height: 150px;
     margin: 0 11px 11px 0;
     margin: 0 8px 8px 0\0/;
     overflow: hidden;
 }
 
 li.widget_ads_small li img {
-    width: 142px;
-    height: 142px;
+    width: 169px;
+    height: 150px;
 }
 
 li.widget_ads_small li:nth-child(2n) {
@@ -1121,7 +1122,7 @@ li.widget_social_media > ul {
 
 li.widget_social_media > ul > li {
     float: left;
-    width: 143px;
+    width: 169px;
     height: 84px;
     margin: 0 9px 9px 0;
     margin: 0 7px 7px 0\0/;
