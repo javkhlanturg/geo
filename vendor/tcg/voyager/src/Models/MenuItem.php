@@ -11,4 +11,8 @@ class MenuItem extends Model
     protected $fillable = [
         'menu_id', 'title', 'url', 'target', 'icon_class', 'parent_id', 'color', 'order',
     ];
+
+    public function mainMenu(){
+       return $this->hasOne("TCG\Voyager\Models\Menu", 'id', 'menu_id');
+    }
 }

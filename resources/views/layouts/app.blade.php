@@ -17,7 +17,12 @@
 	<link rel="stylesheet" href="\assets\css\foundation.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="\assets\css\style.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="\assets\css\responsive.css" type="text/css" media="screen">
-
+	<style>
+	  #top-menu a.active{
+	    background-color: #000;
+	  }
+	</style>
+	@yield('css')
 </head>
 <body>
 	<!-- Header -->
@@ -27,7 +32,7 @@
        <?php $menus = \TCG\Voyager\Models\MenuItem::where('menu_id', 4)->get(); ?>
 			<ul class="no-bullet inline-list m0">
         @foreach($menus as $menu)
-				<li><a href="{{$menu->url}}">{{$menu->title}}</a></li>
+				<li><a id="menu_{{$menu->menu_id}}_{{$menu->id}}" href="{{$menu->url}}">{{$menu->title}}</a></li>
 			  @endforeach
 			</ul>
 		</nav>
@@ -62,6 +67,13 @@
 	<script type="text/javascript" src="\assets\js\jcarousel.js"></script>
 	<script type="text/javascript" src="\assets\js\jquery.masonry.min.js"></script>
 	<script type="text/javascript" src="\assets\js\script.js"></script>
+	<script>
+    $(document).ready(function(){
+      @if($menu)
+      $('#menu_{{$menu->menu_id}}_{{$menu->id}}').addClass('active');
+      @endif
+    });
+  </script>
 	@yield('javascript')
 </body>
 </html>
