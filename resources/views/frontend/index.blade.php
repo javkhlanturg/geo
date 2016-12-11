@@ -28,9 +28,9 @@
 
     </section>
 
-    @include('frontend.right')
 
-  
+
+
 
 
 @endsection

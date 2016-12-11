@@ -51,6 +51,7 @@
     @include('frontend.header')
       <section class="inner-container clearfix">
 	@yield('content')
+      @include('frontend.right')
   @include('frontend.footer')
 </section>
 </section>
