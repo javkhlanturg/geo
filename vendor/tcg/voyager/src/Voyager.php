@@ -2,9 +2,14 @@
 
 namespace TCG\Voyager;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use TCG\Voyager\Models\Permission;
 use TCG\Voyager\Models\Setting;
-use TCG\Voyager\Models\DataType;
+use TCG\Voyager\Models\User;
+
 class Voyager
 {
     /**
@@ -19,6 +24,29 @@ class Voyager
         }
 
         return static::$instance;
+    }
+
+    public function getVersion()
+    {
+        $composer_lock = __DIR__.'/../../../../composer.lock';
+        $version = null;
+
+        if (File::exists($composer_lock)) {
+            // Get the composer.lock file
+            $file = json_decode(
+                File::get($composer_lock)
+            );
+
+            // Loop through all the packages and get the version of voyager
+            foreach ($file->packages as $package) {
+                if ($package->name == 'tcg/voyager') {
+                    $version = $package->version;
+                    break;
+                }
+            }
+        }
+
+        return $version;
     }
 
     protected function __construct()
@@ -60,18 +88,21 @@ class Voyager
         return $default;
     }
 
-    public function getSlugName($slug){
-      if($slug==='edit')
-        return "Засах";
-      if($slug==='create')
-        return "Бүртгэх";
-      if($slug==='media')
-        return "Мэдиа";
-      if($slug==='database')
-        return "Өгөгдлийн сан";
-      $datatype = DataType::where('slug', $slug)->first();
-      if(!$datatype)
-        return $slug;
-      return $datatype->display_name_singular;
+    public static function routes()
+    {
+        require __DIR__.'/../routes/voyager.php';
+    }
+
+    public static function can($permission)
+    {
+        // Check if permission exist
+        $exist = Permission::where('key', $permission)->first();
+
+        if ($exist) {
+            $user = User::find(Auth::id());
+            if (!$user->hasPermission($permission)) {
+                throw new UnauthorizedHttpException(null);
+            }
+        }
     }
 }

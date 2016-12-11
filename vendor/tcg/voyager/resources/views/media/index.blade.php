@@ -35,7 +35,7 @@
                             <button type="button" class="btn btn-default" id="move"><i class="voyager-move"></i> Зөөх
                             </button>
                             <button type="button" class="btn btn-default" id="rename"><i class="voyager-character"></i>
-                                Нэр засах
+                                Нэр өөрчлөх
                             </button>
                             <button type="button" class="btn btn-default" id="delete"><i class="voyager-trash"></i>
                                 Устгах
@@ -75,7 +75,7 @@
                                             <div class="link_icon">
                                                 <template v-if="file.type.includes('image')">
                                                     <div class="img_icon"
-                                                         style="background-size: auto 50px; background: url(@{{ encodeURI(file.path) }}) no-repeat center center;display:inline-block; width:100%; height:100%;"></div>
+                                                         style="background-size: cover; background-image: url(@{{ encodeURI(file.path) }}); background-repeat:no-repeat; background-position:center center;display:inline-block; width:100%; height:100%;"></div>
                                                 </template>
                                                 <template v-if="file.type.includes('video')">
                                                     <i class="icon voyager-video"></i>
@@ -111,11 +111,11 @@
                                     <div id="file_loader_inner">
                                         <div class="icon voyager-helm"></div>
                                     </div>
-                                    <p>Таны мэдиа файлыг ачааллаж байна</p>
+                                    <p>Таны мэдиа файлуудыг ачааллаж байна</p>
                                 </div>
 
                                 <div id="no_files">
-                                    <h3><i class="voyager-meh"></i> Энэ хавтас дотор файл үүсээгүй байна.</h3>
+                                    <h3><i class="voyager-meh"></i> Энэ хавтас хоосон байна.</h3>
                                 </div>
 
                             </div>
@@ -123,7 +123,7 @@
                             <div id="right">
                                 <div class="right_none_selected">
                                     <i class="voyager-cursor"></i>
-                                    <p>Файл болон хавтасаа сонгоогүй байна</p>
+                                    <p>Хавтас эсвэл файл сонгогдоогүй байна</p>
                                 </div>
                                 <div class="right_details">
                                     <div class="detail_img @{{ selected_file.type }}">
@@ -135,14 +135,14 @@
                                                 <source src="@{{selected_file.path}}" type="video/mp4">
                                                 <source src="@{{selected_file.path}}" type="video/ogg">
                                                 <source src="@{{selected_file.path}}" type="video/webm">
-                                                Таны вэб хөтөч энэ видео тагийг дэмжихгүй байна.
+                                                Таны вэб хөтөч энэ видоег дэмжихгүй байна.
                                             </video>
                                         </template>
                                         <template v-if="selected_file.type.includes('audio')">
                                             <audio controls style="width:100%; margin-top:5px;">
                                                 <source src="@{{selected_file.path}}" type="audio/ogg">
                                                 <source src="@{{selected_file.path}}" type="audio/mpeg">
-                                                Таны хөтөч энэ дууны элементийг дэмжихгүй байна.
+                                                Таны хөтөч энэ audio-г дэмжихгүй байна
                                             </audio>
                                         </template>
                                         <template v-if="selected_file.type == 'folder'">
@@ -155,17 +155,17 @@
 
                                     </div>
                                     <div class="detail_info @{{selected_file.type}}">
-							<span><h4>Файлын нэр:</h4>
+							<span><h4>Гарчиг:</h4>
 							<p>@{{selected_file.name}}</p></span>
-                                        <span><h4>Файлын төрөл:</h4>
+                                        <span><h4>Type:</h4>
 							<p>@{{selected_file.type}}</p></span>
                                         <template v-if="selected_file.type != 'folder'">
-								<span><h4>Size:</h4>
+								<span><h4>Хэмжээ:</h4>
 								<p><span class="selected_file_count">@{{ selected_file.items }} item(s)</span><span
                                             class="selected_file_size">@{{selected_file.size}}</span></p></span>
                                             <span><h4>Хандах хаяг:</h4>
-								<p><a href="{{ URL::to('/') }}@{{ selected_file.path }}" target="_blank">Энд дарна уу</a></p></span>
-                                            <span><h4>Хамгийн сүүлд өөрчилсөн:</h4>
+								<p><a href="{{ URL::to('/') }}@{{ selected_file.path }}" target="_blank">Энэд дарна уу</a></p></span>
+                                            <span><h4>Сүүлд өөрчилсөн:</h4>
 								<p>@{{selected_file.last_modified}}</p></span>
                                         </template>
                                     </div>
@@ -177,7 +177,7 @@
 
                         <div class="nothingfound">
                             <div class="nofiles"></div>
-                            <span>Энд файл үүсээгүй байна.</span>
+                            <span>Энд хоосон байна.</span>
                         </div>
 
                     </div>
@@ -226,14 +226,14 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <h4>Шинэ Файл/Хавтасны нэр</h4>
+                                    <h4>Шинэ Файл/Хавтас-ы нэр</h4>
                                     <input id="new_filename" class="form-control" type="text"
                                            value="@{{selected_file.name}}">
                                 </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Болих</button>
-                                    <button type="button" class="btn btn-warning" id="rename_btn">Өөрчлөх</button>
+                                    <button type="button" class="btn btn-warning" id="rename_btn">Нэр өөрчлөх</button>
                                 </div>
                             </div>
                         </div>
@@ -259,7 +259,7 @@
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Болх</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Болих</button>
                                 <button type="button" class="btn btn-info" id="new_folder_submit">Шинэ хавтас үүсгэх
                                 </button>
                             </div>
@@ -280,13 +280,13 @@
                             </div>
 
                             <div class="modal-body">
-                                <h4>Та устгахдаа итгэлтэй байна уу '<span class="confirm_delete_name"></span>'</h4>
-                                <h5 class="folder_warning"><i class="voyager-warning"></i> Хавтасыг устгах үед хавтас дотор байгаа бүх файл устахыг анхаарна уу</h5>
+                                <h4>Та устгахдаа итгэлтэй байна уу'<span class="confirm_delete_name"></span>'</h4>
+                                <h5 class="folder_warning"><i class="voyager-warning"></i> Хавтас доторх бүх файл устгагдана гэдгийг анхаарна уу</h5>
                             </div>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Болих</button>
-                                <button type="button" class="btn btn-danger" id="confirm_delete">Тиймээ, устгана
+                                <button type="button" class="btn btn-danger" id="confirm_delete">Тийм, Устгана
                                 </button>
                             </div>
                         </div>
@@ -303,7 +303,8 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"
                                         aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><i class="voyager-warning"></i> Энэ хэсэгт файлаа оруулна уу</h4>
+                                <h4 class="modal-title"><i class="voyager-warning"></i> Drag and drop files or click
+                                    below to upload</h4>
                             </div>
 
                             <div class="modal-body">
@@ -311,7 +312,7 @@
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Болсон</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Бүгд болсон</button>
                             </div>
                         </div>
                     </div>

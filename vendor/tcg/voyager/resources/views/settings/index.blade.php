@@ -162,7 +162,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-settings"></i> Settings
+        <i class="voyager-settings"></i> Тохиргоо
     </h1>
 @stop
 
@@ -170,13 +170,14 @@
 
     <div class="container-fluid">
         <div class="alert alert-info">
-            <strong>How To Use:</strong>
-            <p>You can get the value of each setting anywhere on your site by calling <code>Voyager::setting('key')</code></p>
+            <strong>Хэрхэн ашиглах ва:</strong>
+            <p>Та нэр болон түлхүүр үгийг оруулна. Хөгжүүлэгч ашиглахдаа дараах жишээг харна уу <code>Voyager::setting('key')</code></p>
         </div>
     </div>
 
     <div class="page-content container-fluid">
-        <form action="{{ route('voyager.settings') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('voyager.settings.update') }}" method="POST" enctype="multipart/form-data">
+            {{ method_field("PUT") }}
             {{ csrf_field() }}
             <div class="panel">
                 @foreach($settings as $setting)
@@ -262,7 +263,7 @@
                     @endif
                 @endforeach
             </div>
-            <button type="submit" class="btn btn-primary pull-right">Тохиргоог хадгалах</button>
+            <button type="submit" class="btn btn-primary pull-right">Save Settings</button>
         </form>
 
         <div style="clear:both"></div>
@@ -270,17 +271,17 @@
         <div class="panel" style="margin-top:10px;">
             <div class="panel-heading new-setting">
                 <hr>
-                <h3 class="panel-title"><i class="voyager-plus"></i> Тохиргоо нэмэх</h3>
+                <h3 class="panel-title"><i class="voyager-plus"></i> New Setting</h3>
             </div>
             <div class="panel-body">
-                <form action="{{ route('voyager.settings.create') }}" method="POST">
+                <form action="{{ route('voyager.settings.store') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="col-md-4">
-                        <label for="display_name">Харагдах нэр</label>
+                        <label for="display_name">Name</label>
                         <input type="text" class="form-control" name="display_name">
                     </div>
                     <div class="col-md-4">
-                        <label for="key">Түлхүүр</label>
+                        <label for="key">Key</label>
                         <input type="text" class="form-control" name="key">
                     </div>
                     <div class="col-md-4">
@@ -371,9 +372,9 @@
                     </h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('voyager.settings') }}" id="delete_form" method="POST">
+                    <form action="{{ route('voyager.settings.delete', ['id' => '__id']) }}" id="delete_form" method="POST">
+                        {{ method_field("DELETE") }}
                         {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
                         <input type="submit" class="btn btn-danger pull-right delete-confirm" value="Yes, Delete This Setting">
                     </form>
                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
@@ -385,11 +386,10 @@
     <script>
         $('document').ready(function () {
             $('.voyager-trash').click(function () {
-                var action = '{{ route('voyager.settings') }}/' + $(this).data('id'),
-                    display = $(this).data('display-name') + '/' + $(this).data('display-key');
+                var display = $(this).data('display-name') + '/' + $(this).data('display-key');
 
                 $('#delete_setting_title').text(display);
-                $('#delete_form')[0].action = action;
+                $('#delete_form')[0].action = $('#delete_form')[0].action.replace('__id', $(this).data('id'));
                 $('#delete_modal').modal('show');
             });
 

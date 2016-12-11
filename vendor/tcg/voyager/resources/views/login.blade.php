@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="admin login">
     <meta name="author" content="">
-    <title>Admin нэвтрэх</title>
+    <title>Admin Login</title>
     {{-- Voyager CSS --}}
     <link rel="stylesheet" href="{{ config('voyager.assets_path') }}/css/voyager.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
@@ -198,15 +198,16 @@
     <div id="title_section">
         <img class="logo-img" src="{{ config('voyager.assets_path') }}/images/logo-icon-light.png" alt="Admin Login">
         <div class="copy">
-            <h1>{{ Voyager::setting('admin_title', 'Гео сонин') }}</h1>
-            <p>{{ Voyager::setting('admin_description', 'Админ хэсэгт тавтай морилно уу') }}</p>
+            <h1>{{ Voyager::setting('admin_title', 'Voyager') }}</h1>
+            <p>{{ Voyager::setting('admin_description', 'Welcome to Voyager. The Missing Admin for Laravel') }}</p>
         </div>
         <div style="clear:both"></div>
     </div>
 
     <div id="login_section">
         <div class="content">
-            <h2>Нэвтрэх хэсэг</h2>
+            <h2>Нэвтрэх хэсэгт</h2>
+            <p>Доорх талбарыг бөглөнө үү:</p>
             <div style="clear:both"></div>
             <form action="{{ route('voyager.login') }}" method="POST" id="login">
                 {{ csrf_field() }}
@@ -221,7 +222,7 @@
             </form>
             @if (count($errors))
                 <div class="error-login">
-                    Имэйл хаяг эсвэл нууц үг буруу байна
+                    Нэвтрэх нэр эсвэл нууц үг буруу байна
                 </div>
             @endif
         </div>

@@ -3,7 +3,7 @@
 @section('page_header')
     <h1 class="page-title">
         <i class="{{ $dataType->icon }}"></i> {{ $dataType->display_name_plural }}
-        <a href="{{ route($dataType->slug.'.create') }}" class="btn btn-success">
+        <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success">
             <i class="voyager-plus"></i> Шинээр нэмэх
         </a>
     </h1>
@@ -32,22 +32,27 @@
                                 @foreach($dataTypeContent as $data)
                                 <tr>
                                     @foreach($dataType->browseRows as $row)
-                                    <td>
-                                        @if($row->type == 'image')
-                                            <img src="@if( strpos($data->{$row->field}, 'http://') === false && strpos($data->{$row->field}, 'https://') === false){{ Voyager::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
-                                        @else
-                                            {{ $data->{$row->field} }}
-                                        @endif
-                                    </td>
+                                        <td>
+                                            <?php $options = json_decode($row->details); ?>
+                                            @if($row->type == 'image')
+                                                <img src="@if( strpos($data->{$row->field}, 'http://') === false && strpos($data->{$row->field}, 'https://') === false){{ Voyager::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
+                                            @elseif($row->type == 'select_multiple')
+                                                @if ($data->{$row->field} && isset($options->relationship))
+                                                    {{ $data->{$row->field}->implode($options->relationship->label, ', ') }}
+                                                @endif
+                                            @else
+                                                {{ $data->{$row->field} }}
+                                            @endif
+                                        </td>
                                     @endforeach
                                     <td class="no-sort no-click">
                                         <div class="btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}" id="delete-{{ $data->id }}">
                                             <i class="voyager-trash"></i> Устгах
                                         </div>
-                                        <a href="{{ route($dataType->slug.'.edit', $data->id) }}" class="btn-sm btn-primary pull-right edit">
+                                        <a href="{{ route('voyager.'.$dataType->slug.'.edit', $data->id) }}" class="btn-sm btn-primary pull-right edit">
                                             <i class="voyager-edit"></i> Засах
                                         </a>
-                                        <a href="{{ route($dataType->slug.'.show', $data->id) }}" class="btn-sm btn-warning pull-right">
+                                        <a href="{{ route('voyager.'.$dataType->slug.'.show', $data->id) }}" class="btn-sm btn-warning pull-right">
                                             <i class="voyager-eye"></i> Үзэх
                                         </a>
                                     </td>
@@ -67,15 +72,14 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> Та устгахдаа итгэлтэй байна уу
-                        this {{ $dataType->display_name_singular }}?</h4>
+                    <h4 class="modal-title"><i class="voyager-trash"></i> Та энэ {{ $dataType->display_name_singular }} устгахдаа итгэлтэй байна уу?</h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route($dataType->slug.'.index') }}" id="delete_form" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <form action="{{ route('voyager.'.$dataType->slug.'.index') }}" id="delete_form" method="POST">
+                        {{ method_field("DELETE") }}
+                        {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
-                               value="Тиймээ, {{ $dataType->display_name_singular }} устгана">
+                               value="Тиймээ, энэ {{ $dataType->display_name_singular }} устгана">
                     </form>
                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Болих</button>
                 </div>

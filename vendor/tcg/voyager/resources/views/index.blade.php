@@ -14,8 +14,8 @@
                     <i class="voyager-group"></i>
                     <?php $user_count = TCG\Voyager\Models\User::count(); ?>
                     <h4>{{ $user_count }} хэрэглэгч</h4>
-                    <p>Нийт {{ $user_count }} бүртгэлтэй хэрэглэгч байна. Дэлгэрэнгүй дарж бүх бүртгэлтэй хэрэглэгч нарыг харна уу.</p>
-                    <a href="/{{ config('voyager.routes.prefix') }}/users" class="btn btn-primary">Дэлгэрэнгүй</a>
+                    <p>Нийт {{ $user_count }} бүртгэлтэй хэрэглэгч байна. Дэлгэрэнгүй дарж хэрэглэгчийн жагсаалтыг харна уу.</p>
+                    <a href="{{ route('voyager.users.index') }}" class="btn btn-primary">Дэлгэрэнгүй</a>
                 </div>
             </div>
             <?php } ?>
@@ -26,8 +26,8 @@
                     <i class="voyager-news"></i>
                     <?php $post_count = TCG\Voyager\Models\Post::count(); ?>
                     <h4>{{ $post_count }} мэдээ</h4>
-                    <p>Нийт {{ $post_count }} мэдээ бүртгэгдсэн байна. Дэлгэрэнгүй дарж бүх мэдээг харна уу.</p>
-                    <a href="/{{ config('voyager.routes.prefix') }}/posts" class="btn btn-primary">Дэлгэрэнгүй</a>
+                    <p>Нийт {{ $post_count }} мэдээ бүртгэгдсэн байна. Дэлгэрэнгүй дарж мэдээний жагсаалтыг харна уу.</p>
+                    <a href="{{ route('voyager.posts.index') }}" class="btn btn-primary">Дэлгэрэнгүй</a>
                 </div>
             </div>
             <?php } ?>
@@ -38,8 +38,8 @@
                     <i class="voyager-file-text"></i>
                     <?php $page_count = TCG\Voyager\Models\Page::count(); ?>
                     <h4>{{ $page_count }} хуудас</h4>
-                    <p>Нийт {{ $page_count }} хуудас бүртгэгдсэн байна. Дэлгэрэнгүй дарж бүх хуудасуудыг харна уу.</p>
-                    <a href="/{{ config('voyager.routes.prefix') }}/pages" class="btn btn-primary">Дэлгэрэнгүй</a>
+                    <p>Нийт {{ $page_count }} хуудас бүртгэгдсэн байна. Дэлгэрэнгүй дарж хуудасны жагсаалтыг харна уу.</p>
+                    <a href="{{ route('voyager.pages.index') }}" class="btn btn-primary">Дэлгэрэнгүй</a>
                 </div>
             </div>
             <?php } ?>

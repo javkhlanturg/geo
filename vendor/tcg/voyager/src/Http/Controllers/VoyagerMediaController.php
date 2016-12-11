@@ -5,6 +5,7 @@ namespace TCG\Voyager\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use TCG\Voyager\Voyager;
 
 class VoyagerMediaController extends Controller
 {
@@ -26,6 +27,8 @@ class VoyagerMediaController extends Controller
 
     public function index()
     {
+        Voyager::can('browse_media');
+
         return view('voyager::media.index');
     }
 
@@ -85,12 +88,12 @@ class VoyagerMediaController extends Controller
         $error = '';
 
         if (Storage::exists($new_folder)) {
-            $error = 'Уучлаарай энэ хавтас үүссэн байна, хэрэв та шинээр нэмэхийг хүсвэл хавтасыг устгана уу';
+            $error = 'Sorry that folder already exists, please delete that folder if you wish to re-create it';
         } else {
             if (Storage::makeDirectory($new_folder)) {
                 $success = true;
             } else {
-                $error = 'Уучлаарай хавтас үүсгэх үед алдаа гарлаа та өөрийн эрхээ шалгаад дахин үзнэ үү';
+                $error = 'Sorry something seems to have gone wrong with creating the directory, please check your permissions';
             }
         }
 
@@ -116,11 +119,11 @@ class VoyagerMediaController extends Controller
 
         if ($type == 'folder') {
             if (!Storage::deleteDirectory($fileFolder)) {
-                $error = 'Уучлаарай хавтасыг устгах үед алдаа гарлаа, та өөрийн эрхээ шалгаад дахин үзнэ үү';
+                $error = 'Sorry something seems to have gone wrong when deleting this folder, please check your permissions';
                 $success = false;
             }
         } elseif (!Storage::delete($fileFolder)) {
-            $error = 'Уучлаарай хавтас устгах үед алдаа гарлаа та өөрийн эрхээ шалгаад дахин үзнэ үү';
+            $error = 'Sorry something seems to have gone wrong deleting this file, please check your permissions';
             $success = false;
         }
 
@@ -168,10 +171,10 @@ class VoyagerMediaController extends Controller
             if (Storage::move($source, $destination)) {
                 $success = true;
             } else {
-                $error = 'Уучлаарай хавтасыг зөөх үед алдаа гарлаа, та өөрийн эрхээ шалгаад дахин үзнэ үү';
+                $error = 'Sorry there seems to be a problem moving that file/folder, please make sure you have the correct permissions.';
             }
         } else {
-            $error = 'Уучлаарай энэ хавтсанд ийм нэртэй Файл/Хавтас үүссэн байна.';
+            $error = 'Sorry there is already a file/folder with that existing name in that folder.';
         }
 
         return compact('success', 'error');
@@ -197,10 +200,10 @@ class VoyagerMediaController extends Controller
             if (Storage::move("{$location}/{$filename}", "{$location}/{$newFilename}")) {
                 $success = true;
             } else {
-                $error = 'Уучлаарай хавтасыг зөөх үед алдаа гарлаа, та өөрийн эрхээ шалгаад дахин үзнэ үү.';
+                $error = 'Sorry there seems to be a problem moving that file/folder, please make sure you have the correct permissions.';
             }
         } else {
-            $error = 'Файл эсвэл Хавтас магадгүй ийм нэртэй үүссэн байна. Та өөр нэр өгнө үү.';
+            $error = 'File or Folder may already exist with that name. Please choose another name or delete the other file.';
         }
 
         return compact('success', 'error');
@@ -211,14 +214,16 @@ class VoyagerMediaController extends Controller
     public function upload(Request $request)
     {
         try {
-            $request->file->store($request->upload_path);
+            $path = $request->file->store($request->upload_path);
             $success = true;
-            $message = 'Шинэ файл амжилттай хуулагдлаа!';
+            $message = 'Successfully uploaded new file!';
         } catch (Exception $e) {
             $success = false;
             $message = $e->getMessage();
         }
 
-        return response()->json(compact('success', 'message'));
+        $path = preg_replace('/^public\//', '', $path);
+
+        return response()->json(compact('success', 'message', 'path'));
     }
 }

@@ -27,9 +27,6 @@
 
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
 
-    <!-- Voyager CSS -->
-    <link rel="stylesheet" href="{{ config('voyager.assets_path') }}/css/voyager.css">
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ config('voyager.assets_path') }}/images/logo-icon.png" type="image/x-icon">
 
@@ -41,6 +38,10 @@
     <script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/vue.min.js"></script>
 
     @yield('css')
+
+    <!-- Voyager CSS -->
+    <link rel="stylesheet" href="{{ config('voyager.assets_path') }}/css/voyager.css">
+
     @yield('head')
 
 </head>
@@ -70,23 +71,23 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
 
                     <ol class="breadcrumb">
                         @if(count(Request::segments()) == 1)
-                            <li class="active"><i class="voyager-boat"></i> Нүүр хуудас</li>
+                            <li class="active"><i class="voyager-boat"></i> Нүүр </li>
                         @else
                             <li class="active">
-                                <a href="{{ route('voyager.dashboard')}}"><i class="voyager-boat"></i> Нүүр хуудас</a>
+                                <a href="{{ route('voyager.dashboard')}}"><i class="voyager-boat"></i> Нүүр </a>
                             </li>
                         @endif
                         <?php $breadcrumb_url = ''; ?>
                         @for($i = 1; $i <= count(Request::segments()); $i++)
                             <?php $breadcrumb_url .= '/' . Request::segment($i); ?>
-                            @if(Request::segment($i) != config('voyager.routes.prefix') && !is_numeric(Request::segment($i)))
+                            @if(Request::segment($i) != ltrim(route('voyager.dashboard', [], false), '/') && !is_numeric(Request::segment($i)))
 
                                 @if($i < count(Request::segments()) & $i > 0)
                                     <li class="active"><a
-                                                href="{{ $breadcrumb_url }}">{{ Voyager::getInstance()->getSlugName(Request::segment($i)) }}</a>
+                                                href="{{ $breadcrumb_url }}">{{ ucwords(str_replace('-', ' ', str_replace('_', ' ', Request::segment($i)))) }}</a>
                                     </li>
                                 @else
-                                    <li>{{ Voyager::getInstance()->getSlugName(Request::segment($i)) }}</li>
+                                    <li>{{ ucwords(str_replace('-', ' ', str_replace('_', ' ', Request::segment($i)))) }}</li>
                                 @endif
 
                             @endif
@@ -151,48 +152,12 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
                             <h4>{{ ucwords(Auth::user()->name) }}</h4>
                             <p>{{ Auth::user()->email }}</p>
 
-                            <a href="{{ route('voyager.profile') }}" class="btn btn-primary">Profile</a>
+                            <a href="{{ route('voyager.profile') }}" class="btn btn-primary">Профайл</a>
                             <div style="clear:both"></div>
                         </div>
                     </div>
 
                     <?= Menu::display('admin', 'admin_menu'); ?>
-
-                        <li class="dropdown">
-                            <a data-toggle="collapse" href="#tools-dropdown-element">
-                                <span class="icon voyager-tools"></span>
-                                <span class="title">Хэрэглсэлүүд</span>
-                                <span class="site-menu-arrow"></span>
-                            </a>
-
-                            <div id="tools-dropdown-element" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul class="nav navbar-nav">
-                                        <li>
-                                            <a href="/{{config('voyager.routes.prefix')}}/menus">
-                                                <span class="icon voyager-list"></span>
-                                                <span class="title">Сайтын цэс builder</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="animsition-link" href="{{ route('voyager.database') }}">
-                                                <span class="icon voyager-data"></span>
-                                                <span class="title">Өгөгдлийн сан</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="{{ route('voyager.settings') }}">
-                                <span class="icon voyager-settings"></span>
-                                <span class="title">Тохиргоо</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.navbar-collapse -->
-                    </div>
                 </nav>
             </div>
             <!-- Main Content -->
@@ -208,7 +173,7 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
 <footer class="app-footer">
     <div class="site-footer-right">
         Made with <i class="voyager-heart"></i> by <a href="http://thecontrolgroup.com" target="_blank">The Control
-            Group</a>
+            Group</a> - {{ Voyager::getVersion() }}
     </div>
 </footer>
 <!-- Javascript Libs -->

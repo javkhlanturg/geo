@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,12 +10,10 @@
 |
 */
 
-Route::get('/', function () {
-    $submenu = TCG\Voyager\Models\MenuItem::where('menu_id', 4)->get();
-    $menus = TCG\Voyager\Models\MenuItem::where('menu_id', 3)->get();
-    return view('/frontend/index', ['submenu'=>$submenu, 'menus'=>$menus]);
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+Route::post('/comment','CommentController@addComment')->name('addComment');
+Route::get('/','HomeController@index');
+Route::get('/{slug}','PostController@postList')->name('postList');
+Route::get('/{slug}/{postid}','PostController@post')->name('viewPost');
