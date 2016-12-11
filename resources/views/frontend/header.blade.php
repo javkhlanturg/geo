@@ -3,7 +3,7 @@
   <nav id="main-menu" class="left navigation">
     <ul class="sf-menu no-bullet inline-list m0">
         @foreach($sub_menus as $menu)
-        <li><a href="{{$menu->url}}" @if($loop->index === 0) class="active" @endif>{{$menu->title}}</a></li>
+        <li><a id="menu_{{$menu->id}}" href="{{$menu->url}}" @if($loop->index === 0) class="active" @endif>{{$menu->title}}</a></li>
         @endforeach
     </ul>
   </nav>

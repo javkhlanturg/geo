@@ -35,11 +35,13 @@
 
 		<div class="inner-header clearfix">
 			<div id="logo" class="left">
-				<h1><a href="index-1.htm"><img alt="" src="\assets\images\logo.png"></a></h1>
+				<?php $logo = App\Banners::where('id', 3)->first(); ?>
+				<h1><a href="/"><img alt="" src="/storage/{{$logo->bannerpath}}"></a></h1>
 			</div>
 
 			<div class="ads-728x90 right">
-				<a href="#"><img alt="" src="\assets\upload\728x90ads.gif"></a>
+				<?php $top_banner = App\Banners::where('id', 2)->first(); ?>
+				<a href="#"><img alt="" src="/storage/{{$top_banner->bannerpath}}"></a>
 			</div>
 		</div>
 	</header>
@@ -54,5 +56,6 @@
 	<script type="text/javascript" src="\assets\js\jcarousel.js"></script>
 	<script type="text/javascript" src="\assets\js\jquery.masonry.min.js"></script>
 	<script type="text/javascript" src="\assets\js\script.js"></script>
+	@yield('javascript')
 </body>
 </html>

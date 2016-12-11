@@ -1,12 +1,8 @@
 @extends('layouts.app')
 @section('css')
 <style>
-  .menu_active{
-    background-color: #f60d2b;
-    border-bottom: 1px solid transparent;
-  }
-  li.menu_active a{
-    color: #fff;
+  #top-menu a.active{
+    background-color: #000;
   }
 </style>
 @endsection
@@ -215,61 +211,7 @@
   			<!-- End Sidebar -->
 
   			<!-- Footer -->
-  			<footer class="row clearfix">
-  				<!-- Footer widgets -->
-  				<ul class="no-bullet clearfix">
-  					<li class="widget four column">
-  						<h3 class="widget-title">About Us</h3>
-  			        	<div class="textwidget">
-  			        		<p>Lorem ipsum dolor sit amet, consec tetuer adipis cing elitraesent vestibulum molestie um sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculusmus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio, gravida at, cursus nec luctus lorem aecenas tristique orci ac semuis ultricies pharetra onec accumsan malesuada orci. Fusce feugiat males odio. Morbi nunc odio, lorem aecenas tristique orci ac semuis ultricies...</p>
-  			       		</div>
-  					</li>
-  					<li class="widget four column">
-  						<h3 class="widget-title">Flicker Gallery</h3>
-  	        			<div class="flickr-widget">
-  	        				<ul class="block-grid four-up">
-  	        						<li><a href="#"><img src="upload\thumb1.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb2.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb3.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb4.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb5.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb6.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb7.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb8.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb5.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb4.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb2.jpg" alt=""></a></li>
-  	        						<li><a href="#"><img src="upload\thumb3.jpg" alt=""></a></li>
-  	        				</ul>
-  	        			</div>
-  					</li>
-  					<li class="widget four column">
-  						<h3 class="widget-title">Twitter</h3>
-  			        	<div class="twitter-widget">
-  			        		<ul>
-  			        			<li>
-  			        				<p><a href="#">about 25 days ago</a> Lorem ipsum dolor sit amet nulla malesuda odio morbi nunc odio tristique: <br><a href="#">http://bit.ly/8b0wO4</a></p>
-  			        			</li>
-  			        			<li>
-  			        				<p><a href="#">about 32 days ago</a> Malesuda orci ultricies pharetra onec accimsan curcus nec lorem aecenas: <br><a href="#">http://bit.ly/8b0wO4</a></p>
-  			        			</li>
-  			        			<li>
-  			        				<p><a href="#">about 59 days ago</a> Socis vestibulum cing molestie malesuada odio onces accussam orci lorem: <br><a href="#">http://bit.ly/8b0wO4</a></p>
-  			        			</li>
-  			        		</ul>
-  			        	</div>
-  					</li>
-  				</ul>
-  				<!-- End Footer widgets -->
-
-  				<div class="copyright clearfix">
-  					© Copyright 2012 Pixelogic
-  				</div>
-
-  				<div id="back-to-top" class="right">
-  					<a href="#top">Back to Top</a>
-  				</div>
-  			</footer>
+        @include('frontend.footer')
   			<!-- End Footer -->
   		</section>
     </section>
@@ -280,83 +222,14 @@
               &nbsp;
           </div>
       </div>
-  <div class="container">
-      <div class="row">
-          <div class="col-sm-8">
-            <section id="content" class="eight column row pull-left">
-  				<h4 class="cat-title mb25">Category</h4>
-
-
-  				<!-- Posts -->
-  				<section class="row">
-  					<!-- Category posts -->
-            @foreach($posts as $item)
-            <article class="post six column">
-  						<div class="post-image">
-  							<a href="#"><img src="upload\imagepost1.jpg" alt=""></a>
-  						</div>
-
-  						<div class="post-container">
-  							<h2 class="post-title">Create a Flexible Folded Paper Effect Using CSS3 Features</h2>
-  							<div class="post-content">
-  								<p>Venenatis volutpat orci, ut sodales augue tempor nec. Integer tempus ullamcorper felis eget dipiscing. Maecenas orci justo, mollis at tempus ac, gravida non</p>
-  							</div>
-  						</div>
-
-  						<div class="post-meta">
-  							<span class="comments"><a href="#">24</a></span>
-  							<span class="author"><a href="#">nextwpthemes</a></span>
-  							<span class="date"><a href="#">13 Jan 2013</a></span>
-  						</div>
-  					</article>
-            @endforeach
-  					<!-- End Category posts -->
-  				</section>
-  				<!-- End Posts -->
-
-  				<!-- Pagenation -->
-  				<div class="pagenation clearfix">
-  					<ul class="no-bullet">
-  						<li class="active"><a href="#">1</a></li>
-  						<li><a href="#">2</a></li>
-  						<li><a href="#">3</a></li>
-  						<li><a href="#">4</a></li>
-  						<li><a href="#">...</a></li>
-  						<li><a href="#">50</a></li>
-  					</ul>
-  				</div>
-  				<!-- End Pagenation -->
-  			</section>
-              <!--Post list-->
-
-
-
-          </div>
-          <!-- Right menu -->
-      </div>
-      <!-- pagination -->
-
-      <div class="container">
-          <div class="row">
-              <div class="col-sm-12">
-
-              </div>
-              <div class="col-sm-12">
-                <?php $footer_banner = App\Banners::where('id', 4)->first(); ?>
-                  <div class="banner">
-                    <a href="{{$footer_banner->url}}">
-                      <img src="/storage/{{$footer_banner->bannerpath}}" class="img-responsive center-block" alt="">
-                    </a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
   @endsection
   @section('javascript')
   <script>
     $(document).ready(function(){
-      $('#menu_{{$menu->id}}').addClass('menu_active');
+      @if($menu)
+      $('#menu_{{$menu->id}}').addClass('active');
+      $('#menu_12').removeClass('active');
+      @endif
     });
   </script>
   @endsection
