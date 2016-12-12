@@ -19,14 +19,17 @@
     </li>
 
     <li class="widget widget_ads_big clearfix">
-      <h3 class="widget-title">Ads Big</h3>
+      <?php $add_banner = App\Banners::where('id', 5)->first(); ?>
+      <span class="add-title"></span>
+
+      <h3 class="widget-title">- Сурталчилгаа -</h3>
       <div class="clearfix">
-        <a href="http://themeforest.net/user/nextWPthemes/portfolio?ref=nextWPThemes"><img alt="" src="\assets\upload\300x250ads.gif"></a>
+        <a href="{{$add_banner->url}}"><img src="/storage/{{$add_banner->bannerpath}}" alt=""></a>
       </div>
     </li>
     <li class="widget widget_facebook_box clearfix">
       <h3 class="widget-title">Find Us On Facebook</h3>
-      <iframe src="http://www.facebook.com/plugins/likebox.php?href=http://facebook.com/psdtuts&amp;width=285&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=false&amp;height=258" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+      {!!Voyager::setting('facebook_page')!!}
     </li>
     <li class="widget widget_video clearfix">
       <h3 class="widget-title">Featured Video</h3>
@@ -41,31 +44,6 @@
         <li><a href="http://themeforest.net/user/nextWPthemes/portfolio?ref=nextWPThemes"><img alt="" src="\assets\upload\150x150ads2.gif"></a></li>
         <li><a href="http://themeforest.net/user/nextWPthemes/portfolio?ref=nextWPThemes"><img alt="" src="\assets\upload\150x150ads2.gif"></a></li>
         <li><a href="http://themeforest.net/user/nextWPthemes/portfolio?ref=nextWPThemes"><img alt="" src="\assets\upload\150x150ads3.gif"></a></li>
-      </ul>
-    </li>
-    <li class="widget widget_social_media clearfix">
-      <h3 class="widget-title">Follow us</h3>
-      <ul class="no-bullet">
-        <li class="twitter">
-          <div class="btn">
-
-          </div>
-        </li>
-        <li class="google_plus">
-          <div class="btn">
-
-          </div>
-        </li>
-        <li class="facebook">
-          <div class="btn">
-
-          </div>
-        </li>
-        <li class="pinterest">
-          <div class="btn">
-
-          </div>
-        </li>
       </ul>
     </li>
 
