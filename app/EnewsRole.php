@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Enews extends Model
+class EnewsRole extends Model
 {
-    protected $table = "enews";
+    protected $table = "enews_role";
     protected $primaryKey = "id";
 }

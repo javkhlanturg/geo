@@ -13,7 +13,15 @@
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
-Route::post('/comment','CommentController@addComment')->name('addComment');
 Route::get('/','HomeController@index');
+Route::post('/comment','CommentController@addComment')->name('addComment');
+Route::get('/e-news','EnewsController@newslist')->name('newslist');
+Route::get('/login','LoginController@index')->name('login');
+Route::post('/login','LoginController@login');
+Route::get('/user/register','RegisterController@index');
+Route::post('/user/register','RegisterController@register');
+Route::get('/user/news/list','DashboardController@allnews')->name('userAllNews')->middleware('auth');;
+Route::get('/user/logout','LoginController@logout');
+Route::get('/user/dashboard','DashboardController@index')->name('userDashboard')->middleware('auth');;
 Route::get('/{slug}','PostController@postList')->name('postList');
 Route::get('/{slug}/{postid}','PostController@post')->name('viewPost');

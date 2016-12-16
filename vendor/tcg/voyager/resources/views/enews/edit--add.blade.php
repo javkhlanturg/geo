@@ -59,6 +59,12 @@
                                        value="@if(isset($dataTypeContent->excerpt)){{ old('excerpt', $dataTypeContent->excerpt) }}@else{{old('excerpt')}}@endif">
                             </div>
                             <div class="form-group">
+                                <label for="price">Үнэ</label>
+                                <input type="text" class="form-control" name="price"
+                                       placeholder="Үнэ оруулна уу" id="price"
+                                       value="@if(isset($dataTypeContent->price)){{ old('price', $dataTypeContent->price) }}@else{{old('price')}}@endif">
+                            </div>
+                            <div class="form-group">
                                 <label for="is_active">Мэдээний төлөв</label>
                                 <select class="form-control" name="is_active">
                                     <option value="ACTIVE" @if(isset($dataTypeContent->is_active) && $dataTypeContent->is_active == 'ACTIVE'){{ 'selected="selected"' }}@endif>Идэвхитэй</option>

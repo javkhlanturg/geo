@@ -37,15 +37,6 @@
         <iframe src="http://www.youtube.com/embed/YdaMGcOyfjM" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
       </div>
     </li>
-    <li class="widget widget_ads_small clearfix">
-      <h3 class="widget-title">Ads Small</h3>
-      <ul class="no-bullet clearfix">
-        <li><a href="http://themeforest.net/user/nextWPthemes/portfolio?ref=nextWPThemes"><img alt="" src="\assets\upload\150x150ads.gif"></a></li>
-        <li><a href="http://themeforest.net/user/nextWPthemes/portfolio?ref=nextWPThemes"><img alt="" src="\assets\upload\150x150ads2.gif"></a></li>
-        <li><a href="http://themeforest.net/user/nextWPthemes/portfolio?ref=nextWPThemes"><img alt="" src="\assets\upload\150x150ads2.gif"></a></li>
-        <li><a href="http://themeforest.net/user/nextWPthemes/portfolio?ref=nextWPThemes"><img alt="" src="\assets\upload\150x150ads3.gif"></a></li>
-      </ul>
-    </li>
 
   </ul>
 </aside>
