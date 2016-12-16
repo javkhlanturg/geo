@@ -19,7 +19,7 @@ Route::get('/e-news','EnewsController@newslist')->name('newslist');
 Route::get('/login','LoginController@index')->name('login');
 Route::post('/login','LoginController@login');
 Route::get('/user/register','RegisterController@index');
-Route::post('/user/register','RegisterController@register');
+Route::post('/user/register','RegisterController@register')->name('addRegister');
 Route::post('/user/news/order','DashboardController@order')->name('orderNews')->middleware('auth');
 Route::post('/user/news/order/delete','DashboardController@deleteOrder')->name('deleteOrder')->middleware('auth');
 Route::get('/user/news/list','DashboardController@allnews')->name('userAllNews')->middleware('auth');

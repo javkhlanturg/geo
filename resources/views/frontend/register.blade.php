@@ -6,13 +6,13 @@
   <hr/>
 
   <div class="contact-form">
-    <form action="{{route('addComment')}}" method="post">
+    <form action="{{route('addRegister')}}" method="post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div id="register">
-          <span>Хэрэглэгчийн нэр<input name="username" type="text" placeholder="Хэрэглэгчийн нэр"></span>
-          <span>Мэйл хаяг<input name="username" type="text" placeholder="Мэйл хаяг"></span>
-          <span>Нууц үг<input name="username" type="text" placeholder="Нууц үг"></span>
-          <span>Утасны дугаар<input name="username" type="text" placeholder="Утасны дугаар"></span>
+          <span>Хэрэглэгчийн нэр<input name="name" type="text" placeholder="Хэрэглэгчийн нэр"></span>
+          <span>Мэйл хаяг<input name="email" type="text" placeholder="Мэйл хаяг"></span>
+          <span>Нууц үг<input name="password" type="text" placeholder="Нууц үг"></span>
+          <span>Утасны дугаар<input name="phone" type="text" placeholder="Утасны дугаар"></span>
       </div>
       <input type="submit" value="Бүртгүүлэх">
     </form>
