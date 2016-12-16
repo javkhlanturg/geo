@@ -7,9 +7,6 @@
                     <div class="panel-body">
                         <div id="dataTable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                           <div class="row">
-                            @if(isset($list))
-                            {{ $list->links() }}
-                            @endif
                               <table
                                 id="dataTable"
                                 class="table table-hover dataTable no-footer"
@@ -19,32 +16,36 @@
                                     <th >Д/д</th>
                                     <th >Сонингийн гарчиг</th>
                                     <th >Товч агуулга</th>
+                                    <th > Төлөв </th>
                                     <th > Үнэ </th>
                                     <th > Нийтэлсэн </th>
                                   <th ></th></tr>
                             </thead>
                             <tbody>
-                              <?php $count = $list->firstItem();?>
                               @foreach($list as $item)
                                 <tr class="odd" role="row">
-                                    <td> {{$count}} </td>
-                                    <td> {{$item->newstitle}} </td>
-                                    <td> {{str_limit($item->excerpt, 40)}} </td>
-                                    <td>  {{number_format($item->price, 2)}} ₮ </td>
-                                    <td>  {{ date('m сарын d, Y',strtotime($item->created_at))}} </td>
+                                    <td> {{$loop->index+1}} </td>
+                                    <td> {{$item->news->newstitle}} </td>
+                                    <td> {{str_limit($item->news->excerpt, 40)}} </td>
+                                    @if( $item->status === 0 )
+                                      <td> <span class="badge badge-info"> Захиалсан </span> </td>
+                                    @elseif($item-status === 1)
+                                      <td> <span>Баталгаажсан</span> </td>
+                                    @elseif($item-status === 2)
+                                      <td> <span>Цуцалсан</span> </td>
+                                    @endif
+                                    <td> {{$item->news->newtitle}} </td>
+                                    <td>  {{number_format($item->news->price, 2)}} ₮ </td>
+                                    <td>  {{ date('m сарын d, Y',strtotime($item->news->created_at))}} </td>
                                     <td>
-                                      <a class="btn-sm btn-primary pull-right ordernews" data-id="{{$item->id}}">
-                                          <i class="voyager-trash"></i> Захиалах
+                                      <a class="btn-sm btn-danger pull-right cancelorder" data-id="{{$item->id}}">
+                                          <i class="voyager-trash"></i> Захиалга цуцлах
                                       </a>
                                     </td>
                                 </tr>
-                                <?php $count++;?>
                                 @endforeach
                             </tbody>
                         </table>
-                        @if(isset($list))
-                        {{ $list->links() }}
-                        @endif
                       </div>
                     </div>
                 </div>
@@ -53,25 +54,25 @@
     </div>
   </div>
 
-  <div class="modal modal-info fade" tabindex="-1" id="order_modal" role="dialog">
+  <div class="modal modal-danger fade" tabindex="-1" id="cancel_modal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title">
-                        <i class="voyager-trash"></i> Сониг захиалах
-                    </h4>
+                    <h5 class="modal-title">
+                        <i class="voyager-trash"></i> Захиалга цуцлах
+                    </h5>
                 </div>
                 <div class="modal-body">
-                  Та захиалга өгснөөр таны захиалсан сонгийн жагсаалтанд орох ба жагсаалт хэсгээс Захиалгын дугаарыг гүйлгээний утган дээр хийж явууна уу
+                  <p>Та захиалгыг цуцлахдаа итгэлтэй байна уу ?</p>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{route('orderNews')}}" id="order_form" method="post">
-                        <input type="hidden" name="newsid" id="newsid">
+                    <form action="{{route('deleteOrder')}}" id="order_form" method="post">
+                        <input type="hidden" name="orderid" id="orderid">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-info pull-right order-confirm" value="Сонинг захиална">
+                        <input type="submit" class="btn btn-danger pull-right order-confirm" value="Тийм">
                     </form>
                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Болих</button>
                 </div>
@@ -82,10 +83,10 @@
 @section('javascript')
 <script>
 $(document).ready(function(){
-  $(document).on('click', '.ordernews', function (e) {
+  $(document).on('click', '.cancelorder', function (e) {
       id = $(e.target).data('id');
-      $('#newsid').val(id);
-      $('#order_modal').modal('show');
+      $('#orderid').val(id);
+      $('#cancel_modal').modal('show');
   });
 });
 </script>
