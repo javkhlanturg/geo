@@ -110,6 +110,9 @@ body > header .inner-header {
     width: 100%;
     background: #fc7100;
 }
+#right {
+  float: right;
+}
 
 #top-menu > ul {
     max-width: 990px;
@@ -647,7 +650,7 @@ footer .widget-title {
 .tabs-widget .tab-links li:first-child {
     margin-left: 0px;
     width: 348px;
-    
+
 }
 
 .tabs-widget .tab-links li a {
@@ -1487,6 +1490,23 @@ ol#comments li.last-child > .comment-text:before {
     content: '';
     border-color: transparent !important;
 }
+
+#register{
+  font-family: 'PT Sans';
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 0px 3px;
+    color: #fc7100;
+}
+#register span{
+  display: inline-table;
+  margin-left: 10px;
+}
+
+#register input{
+  margin-top: 10px;
+}
+
 
 /*-------------------------------------------------*/
 /* =  Contact Page

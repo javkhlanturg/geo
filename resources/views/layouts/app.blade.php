@@ -34,8 +34,11 @@
         @foreach($menus as $menu)
 				<li><a id="menu_{{$menu->menu_id}}_{{$menu->id}}" href="{{$menu->url}}">{{$menu->title}}</a></li>
 			  @endforeach
+				<li id="right"><a href="">Бүртгүүлэх</a></li>
+				<li id="right"><a href="">Нэвтрэх</a></li>
 			</ul>
 		</nav>
+
 		<!-- End Top Menu -->
 
 		<div class="inner-header clearfix">
