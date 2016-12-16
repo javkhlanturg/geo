@@ -34,7 +34,7 @@
                                     <td>  {{ date('m сарын d, Y',strtotime($item->created_at))}} </td>
                                     <td>
                                       <a class="btn-sm btn-primary pull-right ordernews" data-id="{{$item->id}}">
-                                          <i class="voyager-trash"></i> Захиалах
+                                          Захиалах
                                       </a>
                                     </td>
                                 </tr>

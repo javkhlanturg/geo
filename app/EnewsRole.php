@@ -12,4 +12,8 @@ class EnewsRole extends Model
     public function news(){
       return $this->hasOne("\App\Enews", 'id', 'news_id');
     }
+
+    public function user(){
+      return $this->hasOne("\App\User", 'id', 'user_id');
+    }
 }

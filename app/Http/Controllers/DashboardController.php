@@ -11,6 +11,11 @@ class DashboardController extends Controller
         return view('user.dashboard');
     }
 
+    public function readNews($newsid){
+      $news = EnewsRole::where('user_id', \Auth::user()->id)->where('news_id', $newsid)->where('status', 1)->first();
+      return view('enews.readnews', ['news'=>$news]);
+    }
+
     public function allnews(){
       $ids = EnewsRole::where('user_id', \Auth::user()->id)->get();
       $array =array();
