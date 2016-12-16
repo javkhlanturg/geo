@@ -175,7 +175,7 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
                                 </a>
                               </li>
                               <li>
-                                <a href="/admin/database" target="_self">
+                                <a href="{{route('myNews')}}" target="_self">
                                   <span class="icon voyager-data"></span>
                                   <span class="title">Захиалсан сонин</span>
                                 </a>
