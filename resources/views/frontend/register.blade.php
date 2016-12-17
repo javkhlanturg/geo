@@ -16,7 +16,7 @@
       </div>
       <input type="submit" value="Бүртгүүлэх">
     </form>
-    <div id="msg" class="message"></div>
+    <div id="info" class="message"></div>
   </div>
 </section>
 @endsection

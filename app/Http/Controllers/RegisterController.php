@@ -18,7 +18,7 @@ class RegisterController extends Controller
     public function register(Request $request){
       $email = $request->input('email');
 
-      $user = User::where('email', $email)->firstOrFail();
+      $user =  new User;
       $user->name = $request->input('name');
       $user->email = $email;
       $user->password = \Hash::make($request->input('password'));
@@ -26,6 +26,6 @@ class RegisterController extends Controller
       $user->avatar = 'users/default.png';
       $user->role_id = '2';
       $user->save();
-      return redirect('/login');
+      return redirect('/user/login');
     }
 }
