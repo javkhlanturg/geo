@@ -29,18 +29,24 @@
                                     <td> {{str_limit($item->news->excerpt, 40)}} </td>
                                     @if( $item->status === 0 )
                                       <td> <span class="badge badge-info"> Захиалсан </span> </td>
-                                    @elseif($item-status === 1)
-                                      <td> <span>Баталгаажсан</span> </td>
-                                    @elseif($item-status === 2)
-                                      <td> <span>Цуцалсан</span> </td>
+                                    @elseif($item->status === 1)
+                                      <td> <span class="badge badge-success">Баталгаажсан</span> </td>
+                                    @elseif($item->status === 2)
+                                      <td> <span class="badge badge-danger">Цуцалсан</span> </td>
                                     @endif
                                     <td> {{$item->news->newtitle}} </td>
                                     <td>  {{number_format($item->news->price, 2)}} ₮ </td>
                                     <td>  {{ date('m сарын d, Y',strtotime($item->news->created_at))}} </td>
                                     <td>
-                                      <a class="btn-sm btn-danger pull-right cancelorder" data-id="{{$item->id}}">
-                                          <i class="voyager-trash"></i> Захиалга цуцлах
+                                      @if( $item->status === 0 )
+                                      <a class="btn-sm btn-danger pull-center cancelorder" data-id="{{$item->id}}">
+                                          Захиалга цуцлах
                                       </a>
+                                      @elseif($item->status === 1)
+                                      <a class="btn-sm btn-info pull-center" href="/user/news/view/{{$item->news->id}}">
+                                          Мэдээ унших
+                                      </a>
+                                      @endif
                                     </td>
                                 </tr>
                                 @endforeach

@@ -23,6 +23,7 @@ Route::post('/user/register','RegisterController@register')->name('addRegister')
 Route::post('/user/news/order','DashboardController@order')->name('orderNews')->middleware('auth');
 Route::post('/user/news/order/delete','DashboardController@deleteOrder')->name('deleteOrder')->middleware('auth');
 Route::get('/user/news/list','DashboardController@allnews')->name('userAllNews')->middleware('auth');
+Route::get('/user/news/view/{newsid}','DashboardController@readNews')->name('readNews')->middleware('auth');
 Route::get('/user/news/m/list','DashboardController@myNews')->name('myNews')->middleware('auth');
 Route::get('/user/logout','LoginController@logout');
 Route::get('/user/dashboard','DashboardController@index')->name('userDashboard')->middleware('auth');
