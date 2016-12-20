@@ -103,13 +103,11 @@ abstract class Controller extends BaseController
             /********** FILE TYPE **********/
             case 'file':
                 if ($file = $request->file($row->field)) {
-                    $filename = Str::random(20);
-                    $path = $slug.'/'.date('F').date('Y').'/';
-                    $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
+                $path = $slug.'/'.date('F').date('Y').'/';
+                $name = Str::random(20).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $name);
 
-                    Storage::put(config('voyager.storage.subfolder').$fullPath, (string) $file, 'public');
-
-                    return $fullPath;
+                return $path.$name;
                 }
             // no break
 
@@ -124,63 +122,17 @@ abstract class Controller extends BaseController
 
             /********** IMAGE TYPE **********/
             case 'image':
-                if ($request->hasFile($row->field)) {
-                    $storage_disk = 'local';
-                    $file = $request->file($row->field);
-                    $filename = Str::random(20);
+            if ($request->hasFile($row->field)) {
 
-                    $path = $slug.'/'.date('F').date('Y').'/';
-                    $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
+                $file = $request->file($row->field);
+              $path = $slug.'/'.date('F').date('Y').'/';
+              $name = Str::random(20).'.'.$file->getClientOriginalExtension();
+              $file->move($path, $name);
+              $data = array_merge(['photo' => $path."{$name}"], $request->all());
 
-                    $options = json_decode($row->details);
+              return $path.$name;
 
-                    if (isset($options->resize) && isset($options->resize->width) && isset($options->resize->height)) {
-                        $resize_width = $options->resize->width;
-                        $resize_height = $options->resize->height;
-                    } else {
-                        $resize_width = 1800;
-                        $resize_height = null;
-                    }
-
-                    $image = Image::make($file)->resize($resize_width, $resize_height,
-                        function (Constraint $constraint) {
-                            $constraint->aspectRatio();
-                            $constraint->upsize();
-                        })->encode($file->getClientOriginalExtension(), 75);
-
-                    Storage::put(config('voyager.storage.subfolder').$fullPath, (string) $image, 'public');
-
-                    if (isset($options->thumbnails)) {
-                        foreach ($options->thumbnails as $thumbnails) {
-                            if (isset($thumbnails->name) && isset($thumbnails->scale)) {
-                                $scale = intval($thumbnails->scale) / 100;
-                                $thumb_resize_width = $resize_width;
-                                $thumb_resize_height = $resize_height;
-                                if ($thumb_resize_width != 'null') {
-                                    $thumb_resize_width = $thumb_resize_width * $scale;
-                                }
-                                if ($thumb_resize_height != 'null') {
-                                    $thumb_resize_height = $thumb_resize_height * $scale;
-                                }
-                                $image = Image::make($file)->resize($thumb_resize_width, $thumb_resize_height,
-                                    function (Constraint $constraint) {
-                                        $constraint->aspectRatio();
-                                        $constraint->upsize();
-                                    })->encode($file->getClientOriginalExtension(), 75);
-                            } elseif (isset($options->thumbnails) && isset($thumbnails->crop->width) && isset($thumbnails->crop->height)) {
-                                $crop_width = $thumbnails->crop->width;
-                                $crop_height = $thumbnails->crop->height;
-                                $image = Image::make($file)->fit($crop_width,
-                                    $crop_height)->encode($file->getClientOriginalExtension(), 75);
-                            }
-
-                            Storage::put(config('voyager.storage.subfolder').$path.$filename.'-'.$thumbnails->name.'.'.$file->getClientOriginalExtension(),
-                                (string) $image, 'public');
-                        }
-                    }
-
-                    return $fullPath;
-                }
+              }
                 break;
 
             /********** ALL OTHER TEXT TYPE **********/

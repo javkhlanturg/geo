@@ -9,7 +9,7 @@
     @foreach($posts as $item)
     <article class="post six column">
       <div class="post-image" style="object-fit: cover;">
-        <a href="/{{$menu->url}}/{{$item->id}}"><img src="/storage/{{$item->image}}" alt="" style="height:130px;object-fit: cover;"></a>
+        <a href="/{{$menu->url}}/{{$item->id}}"><img src="/{{$item->image}}" alt="" style="height:130px;object-fit: cover;"></a>
       </div>
 
       <div class="post-container">

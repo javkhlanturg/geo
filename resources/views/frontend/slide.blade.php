@@ -2,7 +2,7 @@
   <ul class="slides no-bullet inline-list m0">
     @foreach($top_newss as $news)
     <li>
-      <a href="#"><img alt="" src="/storage/{{$news->image}}"></a>
+      <a href="#"><img alt="" src="/{{$news->image}}"></a>
       <div class="flex-caption">
         <div class="desc">
           <h1><a href="#">{{$news->title}}</a></h1>

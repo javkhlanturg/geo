@@ -1,5 +1,5 @@
 <aside id="sidebar" class="four column pull-right">
-   <?php $newss = \TCG\Voyager\Models\Post::limit('5')->get(); ?>
+   <?php $newss = \TCG\Voyager\Models\Post::orderBy('created_at')->limit('5')->get(); ?>
   <ul class="no-bullet">
     <li class="widget tabs-widget clearfix">
       <ul class="tab-links no-bullet clearfix">
@@ -9,8 +9,8 @@
         <ul>
           @foreach($newss as $news)
           <li>
-            <a href="#"><img alt="" src="/storage/{{$news->image}}"></a>
-            <h3><a href="#">{{$news->title}}</a></h3>
+            <a href="{{$news->category['slug']}}/{{$news->id}}"><img alt="" src="/{{$news->image}}"></a>
+            <h3><a href="{{$news->category['slug']}}/{{$news->id}}">{{$news->title}}</a></h3>
             <div class="post-date">{{ date('m сарын d, Y',strtotime($news->created_at))}}</div>
           </li>
           @endforeach
@@ -24,11 +24,11 @@
 
       <h3 class="widget-title">- Сурталчилгаа -</h3>
       <div class="clearfix">
-        <a href="{{$add_banner->url}}"><img src="/storage/{{$add_banner->bannerpath}}" alt=""></a>
+        <a href="{{$add_banner->url}}"><img src="/{{$add_banner->bannerpath}}" alt=""></a>
       </div>
     </li>
     <li class="widget widget_facebook_box clearfix">
-      <h3 class="widget-title">Find Us On Facebook</h3>
+      <h3 class="widget-title">Facebook хуудас</h3>
       {!!Voyager::setting('facebook_page')!!}
     </li>
     <li class="widget widget_video clearfix">

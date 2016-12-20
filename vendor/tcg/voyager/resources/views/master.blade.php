@@ -53,7 +53,7 @@
 </div>
 
 <?php
-$user_avatar = Voyager::image(Auth::user()->avatar);
+$user_avatar = Auth::user()->avatar;
 if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->avatar, 0, 8) == 'https://')) {
     $user_avatar = Auth::user()->avatar;
 }
@@ -107,11 +107,11 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
 
                     <li class="dropdown profile">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false"><img src="{{ $user_avatar }}" class="profile-img"> <span
+                           aria-expanded="false"><img @if(file_exists($user_avatar)) src="/{{ $user_avatar }}" @endif class="profile-img"> <span
                                     class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-animated">
                             <li class="profile-img">
-                                <img src="{{ $user_avatar }}" class="profile-img">
+                                <img src="/{{ $user_avatar }}" class="profile-img">
                                 <div class="profile-body">
                                     <h5>{{ Auth::user()->name }}</h5>
                                     <h6>{{ Auth::user()->email }}</h6>
@@ -148,7 +148,7 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
                          style="background-image:url({{ Voyager::image( Voyager::setting('admin_bg_image'), config('voyager.assets_path') . '/images/bg.jpg' ) }});">
                         <div class="dimmer"></div>
                         <div class="panel-content">
-                            <img src="{{ $user_avatar }}" class="avatar" alt="{{ Auth::user()->name }} avatar">
+                            <img src="/{{ $user_avatar }}" class="avatar" alt="{{ Auth::user()->name }} avatar">
                             <h4>{{ ucwords(Auth::user()->name) }}</h4>
                             <p>{{ Auth::user()->email }}</p>
 

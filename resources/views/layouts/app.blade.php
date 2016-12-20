@@ -44,12 +44,12 @@
 		<div class="inner-header clearfix">
 			<div id="logo" class="left">
 				<?php $logo = App\Banners::where('id', 3)->first(); ?>
-				<h1><a href="/"><img alt="" src="/storage/{{$logo->bannerpath}}"></a></h1>
+				<h1><a href="/"><img alt="" src="/{{$logo->bannerpath}}"></a></h1>
 			</div>
 
 			<div class="ads-728x90 right">
 				<?php $top_banner = App\Banners::where('id', 2)->first(); ?>
-				<a href="#"><img alt="" src="/storage/{{$top_banner->bannerpath}}"></a>
+				<a href="#"><img alt="" src="/{{$top_banner->bannerpath}}"></a>
 			</div>
 		</div>
 	</header>

@@ -5,7 +5,7 @@
     @foreach($ediins as $ed)
     @if($loop->index === 0)
     <div class="post-image">
-      <a href="#"><img src="/storage/{{$ed->image}}" alt=""></a>
+      <a href="#"><img src="/{{$ed->image}}" alt=""></a>
     </div>
 
     <div class="post-container">
@@ -25,7 +25,7 @@
     <div class="other-posts">
       <ul class="no-bullet">
         <li>
-          <a href="#"><img src="/storage/{{$ed->image}}-small" alt=""></a>
+          <a href="#"><img src="/{{$ed->image}}-small" alt=""></a>
           <h3 class="post-title"><a href="#">{{$ed->title}}</a></h3>
           <span class="date"><a href="#">{{ date('Y.m.d',strtotime($ed->created_at))}}</a></span>
         </li>
@@ -43,7 +43,7 @@
     @foreach($tehnologys as $tehnology)
     @if($loop->index === 0)
     <div class="post-image">
-      <a href="#"><img src="/storage/{{$tehnology->image}}" alt=""></a>
+      <a href="#"><img src="/{{$tehnology->image}}" alt=""></a>
     </div>
 
     <div class="post-container">
@@ -63,7 +63,7 @@
     <div class="other-posts">
       <ul class="no-bullet">
         <li>
-          <a href="#"><img src="/storage/{{$tehnology->image}}-small" alt=""></a>
+          <a href="#"><img src="/{{$tehnology->image}}-small" alt=""></a>
           <h3 class="post-title"><a href="#">{{$tehnology->title}}</a></h3>
           <span class="date"><a href="#">{{ date('Y.m.d',strtotime($tehnology->created_at))}}</a></span>
         </li>

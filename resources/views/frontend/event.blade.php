@@ -9,7 +9,7 @@
     <div class="carousel-item-holder row" data-index="0">
       @foreach($events as $event)
       <div class="four column carousel-item">
-        <a href="#"><img src="/storage/{{$event->image  }}" alt=""></a>
+        <a href="#"><img src="/{{$event->image  }}" alt=""></a>
 
         <div class="post-container">
           <h2 class="post-title">{{$event->title}}</h2>

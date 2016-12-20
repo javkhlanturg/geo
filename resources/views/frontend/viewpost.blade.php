@@ -2,7 +2,7 @@
 
 @section('content')
 <section id="content" class="eight column row pull-left singlepost">
-  <a href="#" class="featured-img"><img src="/storage/{{$post->image}}" alt=""></a>
+  <a href="#" class="featured-img"><img src="/{{$post->image}}" alt=""></a>
 
   <h1 class="post-title">{{$post->title}}</h1>
 

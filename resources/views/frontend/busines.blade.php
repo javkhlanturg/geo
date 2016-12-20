@@ -5,7 +5,7 @@
     @foreach($business as $bus)
     @if($loop->index === 0)
     <div class="post-image">
-      <a href="#"><img src="/storage/{{$bus->image}}" alt=""></a>
+      <a href="#"><img src="/{{$bus->image}}" alt=""></a>
     </div>
 
     <div class="post-container">
@@ -25,7 +25,7 @@
     <div class="other-posts">
       <ul class="no-bullet">
         <li>
-          <a href="#"><img src="/storage/{{$bus->image}}-small" alt=""></a>
+          <a href="#"><img src="/{{$bus->image}}-small" alt=""></a>
           <h3 class="post-title"><a href="#">{{$bus->title}}</a></h3>
           <span class="date"><a href="#">{{ date('Y.m.d',strtotime($bus->created_at))}}</a></span>
         </li>
@@ -43,7 +43,7 @@
     @foreach($uuls as $uul)
     @if($loop->index === 0)
     <div class="post-image">
-      <a href="#"><img src="/storage/{{$uul->image}}" alt=""></a>
+      <a href="#"><img src="/{{$uul->image}}" alt=""></a>
     </div>
 
     <div class="post-container">
@@ -63,7 +63,7 @@
     <div class="other-posts">
       <ul class="no-bullet">
         <li>
-          <a href="#"><img src="/storage/{{$uul->image}}-small" alt=""></a>
+          <a href="#"><img src="/{{$uul->image}}-small" alt=""></a>
           <h3 class="post-title"><a href="#">{{$uul->title}}</a></h3>
           <span class="date"><a href="#">{{ date('Y.m.d',strtotime($uul->created_at))}}</a></span>
         </li>

@@ -83,10 +83,10 @@
                             <div class="form-group">
                                 <label for="ifimage">Зураг</label>
                                 @if(isset($dataTypeContent->ifimage))
-                                    <img src="{{ Voyager::image( $dataTypeContent->ifimage ) }}"
+                                    <img src="/{{$dataTypeContent->ifimage}}"
                                          style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
                                 @endif
-                                <input type="file" name="ifimage">
+                                <input type="file" name="ifimage" id="ifimage">
                             </div>
 
 

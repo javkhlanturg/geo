@@ -37,7 +37,7 @@
                                     <td>{{$data->email}}</td>
                                     <td>{{$data->created_at}}</td>
                                     <td>
-                                        <img src="@if( strpos($data->avatar, 'http://') === false && strpos($data->avatar, 'https://') === false){{ Voyager::image( $data->avatar ) }}@else{{ $data->avatar }}@endif" style="width:100px">
+                                        <img @if(file_exists($data->avatar))src="/{{ $data->avatar }}" style="width:100px" @endif>
                                     </td>
                                     <td>{{$data->role->display_name}}</td>
                                     <td class="no-sort no-click">
