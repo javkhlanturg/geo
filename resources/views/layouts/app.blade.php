@@ -31,8 +31,12 @@
 		<nav id="top-menu" class="clearfix">
        <?php $menus = \TCG\Voyager\Models\MenuItem::where('menu_id', 4)->get(); ?>
 			<ul class="no-bullet inline-list m0">
-        @foreach($menus as $menu)
-				<li><a id="menu_{{$menu->menu_id}}_{{$menu->id}}" href="{{$menu->url}}">{{$menu->title}}</a></li>
+        @foreach($menus as $menu_)
+				@if(isset($menu) and $menu->id === $menu_->id)
+				<li><a class="active" href="{{$menu_->url}}">{{$menu_->title}}</a></li>
+				@else
+				<li><a href="{{$menu_->url}}">{{$menu_->title}}</a></li>
+				@endif
 			  @endforeach
 				<li id="right"><a href="/user/register">Бүртгүүлэх</a></li>
 				<li id="right"><a href="/login">Нэвтрэх</a></li>
@@ -70,13 +74,6 @@
 	<script type="text/javascript" src="\assets\js\jcarousel.js"></script>
 	<script type="text/javascript" src="\assets\js\jquery.masonry.min.js"></script>
 	<script type="text/javascript" src="\assets\js\script.js"></script>
-	<script>
-    $(document).ready(function(){
-      @if($menu)
-      $('#menu_{{$menu->menu_id}}_{{$menu->id}}').addClass('active');
-      @endif
-    });
-  </script>
 	@yield('javascript')
 </body>
 </html>
