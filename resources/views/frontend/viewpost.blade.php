@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="content" class="eight column row pull-left singlepost">
+<section id="content" class="eight column row pull-left singlepost" style="color: #3c414e; font-size: 14px;">
   <h1 class="post-title">{{$post->title}}</h1>
   <span style="font-size:13px;">{{ date('m сарын d, Y',strtotime($post->created_at))}} - </span><span><b>{{$menu->title}}</b></span>
   <div style="margin-top:10px" class="featured-img"><img src="/{{$post->image}}" alt=""></div>

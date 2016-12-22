@@ -15,7 +15,7 @@
       <div class="post-container">
         <h2 class="post-title"><a href="{{$menu->url}}/{{$item->id}}">{{$item->title}}</a></h2>
         <div class="post-content">
-          <p>{{$item->excerpt}}</p>
+          <p>{{str_limit($item->excerpt, 150)}}</p>
         </div>
       </div>
 

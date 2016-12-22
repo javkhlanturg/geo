@@ -381,6 +381,10 @@ body > header .inner-header {
 
 .post-image img {
     min-width: 100%;
+    object-fit: cover;
+    margin-top:5px;
+	float: center;
+	height: 130px;
 }
 
 .post-container {
@@ -391,17 +395,20 @@ body > header .inner-header {
 
 .post-container .post-title {
     font-family: 'PT Sans';
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
-    line-height: 20px;
+    line-height: 18px;
     margin: 0 0 8px 0;
     color: #535353;
 }
 
 .post-container .post-content {
-    color: #999;
-    line-height: 18px;
-    font-size: 13px;
+    color: #3c414e;
+}
+
+.post-container .post-content p {
+    color: #3c414e;
+    line-height: 17px;
 }
 
 .post-meta {
