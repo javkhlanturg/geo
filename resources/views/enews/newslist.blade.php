@@ -28,7 +28,7 @@
     <article class="post">
       <div class="post-container">
         <div class="post-content">
-          <img src="/storage/posts/December2016/snHsVHhZB5p7bHAI4EeF.jpg" alt="" style="height:130px;width:220px;object-fit: cover;float: left;margin-right:20px">
+          <img src="/{{$post->ifimage}}" alt="" style="height:130px;width:220px;object-fit: cover;float: left;margin-right:20px">
           <h2 class="post-title"><a href="#">{{$post->newstitle}}</a></h2>
           <p>{{$post->excerpt}}</p>
           <div class="post-meta">

@@ -44,7 +44,7 @@
     <!-- add -->
     <?php $add_banner = App\Banners::where('id', 5)->first(); ?>
     <span class="add-title">- Сурталчилгаа -</span>
-    <a href="{{$add_banner->url}}"><img src="/storage/{{$add_banner->bannerpath}}" class="img-responsive center-block" alt=""></a>
+    <a href="{{$add_banner->url}}"><img src="/{{$add_banner->bannerpath}}" class="img-responsive center-block" alt=""></a>
   </div>
   <!-- comments -->
   <div class="latest-comments-inner">

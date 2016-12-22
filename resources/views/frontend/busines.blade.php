@@ -5,19 +5,19 @@
     @foreach($business as $bus)
     @if($loop->index === 0)
     <div class="post-image">
-      <a href="#"><img src="/storage/{{$bus->image}}" alt=""></a>
+      <a href="/{{$bus->category['slug']}}/{{$bus->id}}"><img src="/{{$bus->image}}" alt=""></a>
     </div>
 
     <div class="post-container">
-      <h2 class="post-title">{{$bus->title}}</h2>
+      <h2 class="post-title"><a href="/{{$bus->category['slug']}}/{{$bus->id}}">{{$bus->title}}</a></h2>
       <div class="post-content">
-        <p>{{$bus->excerpt}}</p>
+        <p>{{str_limit($bus->excerpt, 200)}}</p>
       </div>
     </div>
 
     <div class="post-meta">
-      <span class="comments"><a href="#">24</a></span>
-      <span class="author"><a href="#">Админ</a></span>
+      <span class="comments"><a href="#">{{$bus->commentCount()}}</a></span>
+      <span class="author"><a href="#">{{$bus->user['name']}}</a></span>
       <span class="date"><a href="#">{{ date('Y.m.d',strtotime($bus->created_at))}}</a></span>
     </div>
     @else
@@ -25,8 +25,8 @@
     <div class="other-posts">
       <ul class="no-bullet">
         <li>
-          <a href="#"><img src="/storage/{{$bus->image}}-small" alt=""></a>
-          <h3 class="post-title"><a href="#">{{$bus->title}}</a></h3>
+          <a href="/{{$bus->category['slug']}}/{{$bus->id}}"><img src="/{{$bus->image}}-small" alt=""></a>
+          <h3 class="post-title"><a href="/{{$bus->category['slug']}}/{{$bus->id}}">{{$bus->title}}</a></h3>
           <span class="date"><a href="#">{{ date('Y.m.d',strtotime($bus->created_at))}}</a></span>
         </li>
 
@@ -43,19 +43,19 @@
     @foreach($uuls as $uul)
     @if($loop->index === 0)
     <div class="post-image">
-      <a href="#"><img src="/storage/{{$uul->image}}" alt=""></a>
+      <a href="/{{$uul->category['slug']}}/{{$uul->id}}"><img src="/{{$uul->image}}" alt=""></a>
     </div>
 
     <div class="post-container">
-      <h2 class="post-title">{{$uul->title}}</h2>
+      <h2 class="post-title"><a href="/{{$uul->category['slug']}}/{{$uul->id}}">{{$uul->title}}</a></h2>
       <div class="post-content">
-        <p>{{$uul->excerpt}}</p>
+        <p>{{str_limit($uul->excerpt, 200)}}</p>
       </div>
     </div>
 
     <div class="post-meta">
-      <span class="comments"><a href="#">24</a></span>
-      <span class="author"><a href="#">Админ</a></span>
+      <span class="comments"><a href="#">{{$uul->commentCount()}}</a></span>
+      <span class="author"><a href="#">{{$uul->user['name']}}</a></span>
       <span class="date"><a href="#">{{ date('Y.m.d',strtotime($uul->created_at))}}</a></span>
     </div>
     @else
@@ -63,8 +63,8 @@
     <div class="other-posts">
       <ul class="no-bullet">
         <li>
-          <a href="#"><img src="/storage/{{$uul->image}}-small" alt=""></a>
-          <h3 class="post-title"><a href="#">{{$uul->title}}</a></h3>
+          <a href="/{{$uul->category['slug']}}/{{$uul->id}}"><img src="/{{$uul->image}}-small" alt=""></a>
+          <h3 class="post-title"><a href="/{{$uul->category['slug']}}/{{$uul->id}}">{{$uul->title}}</a></h3>
           <span class="date"><a href="#">{{ date('Y.m.d',strtotime($uul->created_at))}}</a></span>
         </li>
 

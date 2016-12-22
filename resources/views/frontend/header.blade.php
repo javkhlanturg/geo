@@ -2,8 +2,12 @@
 <header class="clearfix">
   <nav id="main-menu" class="left navigation">
     <ul class="sf-menu no-bullet inline-list m0">
-        @foreach($sub_menus as $menu)
-        <li><a id="menu_{{$menu->menu_id}}_{{$menu->id}}" href="{{$menu->url}}" >{{$menu->title}}</a></li>
+        @foreach($sub_menus as $_menu)
+        @if(isset($menu) and $menu->id===$_menu->id)
+        <li><a class="active" href="{{$_menu->url}}" >{{$_menu->title}}</a></li>
+        @else
+        <li><a href="{{$_menu->url}}" >{{$_menu->title}}</a></li>
+        @endif
         @endforeach
     </ul>
   </nav>

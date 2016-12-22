@@ -16,8 +16,9 @@
 
       @include('frontend.event',['events'=>$events])
 
-      <div class="ads-middle mb25">
-        <a href="#"><img src="\assets\upload\468x60ads.jpg" alt=""></a>
+      <div class="ads-middle mb25" style="padding:0px">
+        <?php $center_banner = App\Banners::where('id', 6)->first(); ?>
+				<a href="#"><img alt="" src="/{{$center_banner->bannerpath}}"></a>
       </div>
 
 

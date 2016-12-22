@@ -9,13 +9,13 @@
     @foreach($posts as $item)
     <article class="post six column">
       <div class="post-image" style="object-fit: cover;">
-        <a href="/{{$menu->url}}/{{$item->id}}"><img src="/storage/{{$item->image}}" alt="" style="height:130px;object-fit: cover;"></a>
+        <a href="/{{$menu->url}}/{{$item->id}}"><img src="/{{$item->image}}" alt="" style="height:130px;object-fit: cover;"></a>
       </div>
 
       <div class="post-container">
         <h2 class="post-title"><a href="{{$menu->url}}/{{$item->id}}">{{$item->title}}</a></h2>
         <div class="post-content">
-          <p>{{$item->excerpt}}</p>
+          <p>{{str_limit($item->excerpt, 150)}}</p>
         </div>
       </div>
 

@@ -12,8 +12,8 @@ class PostController extends Controller
       if(!$category){
         abort(404);
       }
-      $posts = $category->posts()->paginate(3);
-      $newss = \TCG\Voyager\Models\Post::orderBy('created_at', 'desc')->limit('3')->get();
+      $posts = $category->posts()->paginate(10);
+      $newss = \TCG\Voyager\Models\Post::orderBy('created_at', 'desc')->limit('10')->get();
       return view("frontend.postlist", ['posts'=>$posts, 'menu'=>$menu, 'newss'=>$newss]);
   }
 
