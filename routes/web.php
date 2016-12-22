@@ -16,6 +16,8 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/','HomeController@index');
 Route::post('/comment','CommentController@addComment')->name('addComment');
 Route::get('/e-news','EnewsController@newslist')->name('newslist');
+Route::get('/zar','ZarController@index')->name('zar');
+Route::post('zar/add','ZarController@zarAdd')->name('zarAdd');
 Route::get('/login','LoginController@index')->name('login');
 Route::post('/login','LoginController@login');
 Route::get('/user/register','RegisterController@index');

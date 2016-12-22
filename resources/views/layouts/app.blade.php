@@ -38,6 +38,7 @@
 				<li><a href="{{$menu_->url}}">{{$menu_->title}}</a></li>
 				@endif
 			  @endforeach
+				<li><a href="{{ url('/zar') }}">Зар нэмэх</a></li>
 				<li id="right"><a href="/user/register">Бүртгүүлэх</a></li>
 				<li id="right"><a href="/login">Нэвтрэх</a></li>
 			</ul>

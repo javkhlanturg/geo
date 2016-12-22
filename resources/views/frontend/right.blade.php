@@ -31,6 +31,7 @@
       <h3 class="widget-title">Facebook хуудас</h3>
       {!!Voyager::setting('facebook_page')!!}
     </li>
+
     <li class="widget widget_ads_small clearfix masonry-brick" style="position: absolute; top: 750px; left: 12px;">
 						<h3 class="widget-title">Ads Small</h3>
             <?php $logo_left_top = App\Banners::where('id', 7)->first(); ?>
@@ -44,12 +45,26 @@
 							<li><a href="/{{$logo_right_bottom->url}}"><img alt="" src="/{{$logo_right_bottom->bannerpath}}"></a></li>
 						</ul>
 					</li>
-    <li class="widget widget_video clearfix">
-      <h3 class="widget-title">Featured Video</h3>
-      <div class="flex-video widescreen">
-        <iframe src="http://www.youtube.com/embed/YdaMGcOyfjM" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-      </div>
-    </li>
+          <li class="widget tabs-widget clearfix">
+            <ul class="tab-links no-bullet clearfix">
+              <li class="active">
+                <a href="{{ url('/zar') }}">Шинэ зар</a>
+              </li>
+            </ul>
+             <?php $zars = App\Zar::orderBy('created_at', 'desc')->limit('5')->get(); ?>
+            <div id="popular-tab">
+              <ul>
+                @foreach($zars as $zar)
+                <li>
+                  <h3><a href="#">{{$zar->title}}</a></h3>
+                  <div class="content">{{$zar->body}}</div>
+                  <div class="email">{{$zar->email}}</div>
+                  <div class="phone">{{$zar->phone}}</div>
+                </li></hr>
+                @endforeach
+              </ul>
+            </div>
+          </li>
 
   </ul>
 </aside>
