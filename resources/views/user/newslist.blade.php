@@ -6,46 +6,39 @@
                 <div class="panel panel-bordered">
                     <div class="panel-body">
                         <div id="dataTable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                          <div class="row">
+
                             @if(isset($list))
                             {{ $list->links() }}
                             @endif
-                              <table
-                                id="dataTable"
-                                class="table table-hover dataTable no-footer"
-                                role="grid" aria-describedby="dataTable_info">
-                                <thead>
-                                  <tr role="row">
-                                    <th >Д/д</th>
-                                    <th >Сонингийн гарчиг</th>
-                                    <th >Товч агуулга</th>
-                                    <th > Үнэ </th>
-                                    <th > Нийтэлсэн </th>
-                                  <th ></th></tr>
-                            </thead>
-                            <tbody>
+                            <div class="row">
                               <?php $count = $list->firstItem();?>
                               @foreach($list as $item)
-                                <tr class="odd" role="row">
-                                    <td> {{$count}} </td>
-                                    <td> {{$item->newstitle}} </td>
-                                    <td> {{str_limit($item->excerpt, 40)}} </td>
-                                    <td>  {{number_format($item->price, 2)}} ₮ </td>
-                                    <td>  {{ date('m сарын d, Y',strtotime($item->created_at))}} </td>
-                                    <td>
-                                      <a class="btn-sm btn-primary pull-right ordernews" data-id="{{$item->id}}">
-                                          Захиалах
-                                      </a>
-                                    </td>
-                                </tr>
-                                <?php $count++;?>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                <div class="col-xs-6 col-md-4">
+                                  <div class="bs-example" data-example-id="contextual-panels">
+                                    <div class="panel panel-warning">
+                                      <div class="panel-heading" style="background-color:#fc7100">
+                                        <span class="panel-title" style="font-size:14px; padding:10px">
+                                          {{$item->newstitle}}</span>
+                                      </div>
+                                      <img style="object-fit: cover; height:200px; width:100%" src="/{{$item->ifimage}}">
+                                      <div class="flex-caption">
+                                          <div class="desc">
+                                          <p>
+                                            <span>Үнэ: {{number_format($item->price, 2)}} ₮ <br/>Нийтэлсэн: {{ date('m сарын d, Y',strtotime($item->created_at))}}</span>
+                                          </p>
+                                          </div>
+                                        </div>
+                                      <a style="background-color:#fc7100; color:#fff" class="btn btn-sm col-md-12 col-sm-12 ordernews" data-id="{{$item->id}}">Захиалах</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              <?php $count++;?>
+                              @endforeach
+                              </div>
                         @if(isset($list))
                         {{ $list->links() }}
                         @endif
-                      </div>
+
                     </div>
                 </div>
             </div>
