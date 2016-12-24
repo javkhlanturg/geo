@@ -28,7 +28,7 @@
                                           </p>
                                           </div>
                                         </div>
-                                      <a style="background-color:#fc7100; color:#fff" class="btn btn-sm col-md-12 col-sm-12 ordernews" data-id="{{$item->id}}">Захиалах</a>
+                                      <a style="background-color:#fc7100; color:#fff; margin-top: 0px;" class="btn btn-sm col-md-12 col-sm-12 ordernews" data-id="{{$item->id}}">Захиалах</a>
                                     </div>
                                   </div>
                                 </div>

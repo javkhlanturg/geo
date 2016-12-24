@@ -26,6 +26,6 @@ class RegisterController extends Controller
       $user->avatar = 'users/default.png';
       $user->role_id = '2';
       $user->save();
-      return redirect('/user/login');
+      return redirect('/login');
     }
 }

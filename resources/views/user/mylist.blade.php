@@ -24,12 +24,16 @@
                                         </div>
                                       </div>
                                       @if( $item->status === 0 )
-                                      <a class="btn btn-sm col-md-12 col-sm-12 cancelorder btn-danger" data-id="{{$item->id}}">
+                                      <a style="margin-top: 0px; background-color:#fc7100;" class="btn btn-sm col-md-12 col-sm-12 cancelorder btn-danger" data-id="{{$item->id}}">
                                           Захиалга цуцлах
                                       </a>
                                       @elseif($item->status === 1)
-                                      <a class="btn btn-sm col-md-12 col-sm-12 btn-success ordernews" href="/user/news/view/{{$item->news->id}}">
+                                      <a target="_blank" class="btn btn-sm col-md-12 col-sm-12 btn-success" style=" margin-top: 0px;" href="/user/news/view/{{$item->news->id}}">
                                           Мэдээ унших
+                                      </a>
+                                      @elseif($item->status === 2)
+                                      <a style="margin-top: 0px; background-color:#fc7100;" class="btn btn-sm col-md-12 col-sm-12 btn-warning"  >
+                                          Уучлаарай, Захиалга цуцлагдсан
                                       </a>
                                       @endif
                                   </div>
