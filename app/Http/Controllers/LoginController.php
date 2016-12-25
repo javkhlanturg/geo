@@ -10,6 +10,9 @@ class LoginController extends Controller
 {
   use AuthenticatesUsers;
     public function index(){
+      if ( isset(\Auth::user()->id) and \Auth::user()->id) {
+          return redirect('/user/dashboard');
+      }
       return view('user.login');
     }
     //postlogin

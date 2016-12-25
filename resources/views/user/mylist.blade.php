@@ -5,54 +5,41 @@
             <div class="col-md-12">
                 <div class="panel panel-bordered">
                     <div class="panel-body">
-                        <div id="dataTable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                           <div class="row">
-                              <table
-                                id="dataTable"
-                                class="table table-hover dataTable no-footer"
-                                role="grid" aria-describedby="dataTable_info">
-                                <thead>
-                                  <tr role="row">
-                                    <th >Д/д</th>
-                                    <th >Сонингийн гарчиг</th>
-                                    <th >Товч агуулга</th>
-                                    <th > Төлөв </th>
-                                    <th > Үнэ </th>
-                                    <th > Нийтэлсэн </th>
-                                  <th ></th></tr>
-                            </thead>
-                            <tbody>
                               @foreach($list as $item)
-                                <tr class="odd" role="row">
-                                    <td> {{$loop->index+1}} </td>
-                                    <td> {{$item->news->newstitle}} </td>
-                                    <td> {{str_limit($item->news->excerpt, 40)}} </td>
-                                    @if( $item->status === 0 )
-                                      <td> <span class="badge badge-info"> Захиалсан </span> </td>
-                                    @elseif($item->status === 1)
-                                      <td> <span class="badge badge-success">Баталгаажсан</span> </td>
-                                    @elseif($item->status === 2)
-                                      <td> <span class="badge badge-danger">Цуцалсан</span> </td>
-                                    @endif
-                                    <td> {{$item->news->newtitle}} </td>
-                                    <td>  {{number_format($item->news->price, 2)}} ₮ </td>
-                                    <td>  {{ date('m сарын d, Y',strtotime($item->news->created_at))}} </td>
-                                    <td>
+
+                              <div class="col-xs-6 col-md-4">
+                                <div class="bs-example" data-example-id="contextual-panels">
+                                  <div class="panel panel-warning">
+                                    <div class="panel-heading" style="background-color:#fc7100">
+                                      <span class="panel-title" style="font-size:14px; padding:10px">
+                                        {{$item->news->newstitle}}</span>
+                                    </div>
+                                    <img style="object-fit: cover; height:200px; width:100%" src="/{{$item->news->ifimage}}">
+                                    <div class="flex-caption">
+                                        <div class="desc">
+                                        <p>
+                                          <span>Үнэ: {{number_format($item->news->price, 2)}} ₮ <br/>Нийтэлсэн: {{ date('m сарын d, Y',strtotime($item->news->created_at))}}</span>
+                                        </p>
+                                        </div>
+                                      </div>
                                       @if( $item->status === 0 )
-                                      <a class="btn-sm btn-danger pull-center cancelorder" data-id="{{$item->id}}">
+                                      <a style="margin-top: 0px; background-color:#fc7100;" class="btn btn-sm col-md-12 col-sm-12 cancelorder btn-danger" data-id="{{$item->id}}">
                                           Захиалга цуцлах
                                       </a>
                                       @elseif($item->status === 1)
-                                      <a class="btn-sm btn-info pull-center" href="/user/news/view/{{$item->news->id}}">
+                                      <a target="_blank" class="btn btn-sm col-md-12 col-sm-12 btn-success" style=" margin-top: 0px;" href="/user/news/view/{{$item->news->id}}">
                                           Мэдээ унших
                                       </a>
+                                      @elseif($item->status === 2)
+                                      <a style="margin-top: 0px; background-color:#fc7100;" class="btn btn-sm col-md-12 col-sm-12 btn-warning"  >
+                                          Уучлаарай, Захиалга цуцлагдсан
+                                      </a>
                                       @endif
-                                    </td>
-                                </tr>
+                                  </div>
+                                </div>
+                              </div>
                                 @endforeach
-                            </tbody>
-                        </table>
-                      </div>
                     </div>
                 </div>
             </div>

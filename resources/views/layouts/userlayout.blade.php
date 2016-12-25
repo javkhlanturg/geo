@@ -36,7 +36,12 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/vue.min.js"></script>
-
+    <style>
+    .flex-caption { position: absolute; left: 0; bottom: 0; font-size: 13px; padding: 5px 5px; color: #fff; width: 100%; overflow: hidden; background: rgba(0,0,0, 0.5); background: url(http://www.htmltocss.com/rgbatopng.php?rgba=0,0,0,0.5)\0/; }
+    .flex-caption .desc {overflow: hidden; }
+    .flex-caption a { color: #fc7100; margin-bottom: 7px; font-family: 'PT Sans'; font-size: 18px; line-height: 20px; display: block; }
+    .flex-caption p { line-height: 17px; padding:5px }
+    </style>
     @yield('css')
 
     <!-- Voyager CSS -->
@@ -60,58 +65,22 @@ if ((substr(Auth::user()->avatar, 0, 7) == 'http://') || (substr(Auth::user()->a
 $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1;
 ?>
 
-<div class="app-container @if ($menuExpanded) expanded @endif ">
+<div class="app-container  expanded  ">
     <div class="row content-container">
         <nav class="navbar navbar-default navbar-fixed-top navbar-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <div class="hamburger @if ($menuExpanded) is-active @endif ">
-                        <span class="hamburger-inner"></span>
-                    </div>
                     <ol class="breadcrumb">
                         <li class="active">
-                            <a href="/user/dashboard"><i class="voyager-home"></i> Нүүр </a>
+                            Гёо уул уурхай, цахим сонин
                         </li>
-                        @if(1=== 0)
-                        <li>
-                          <a href="/admin/enews" target="_self">
-                            <span class="icon voyager-wallet"></span>
-                            <span class="title">Цахим сонин</span></a>
-                          </li>
-                            @endif
                     </ol>
-
-
-                    <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-                        <i class="voyager-list icon"></i>
-                    </button>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-                        <i class="voyager-x icon"></i>
-                    </button>
 
 
                     <li class="dropdown profile">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false"><img src="{{ $user_avatar }}" class="profile-img"> <span
-                                    class="caret"></span></a>
-                        <ul class="dropdown-menu dropdown-menu-animated">
-                            <li class="profile-img">
-                                <img src="{{ $user_avatar }}" class="profile-img">
-                                <div class="profile-body">
-                                    <h5>{{ Auth::user()->name }}</h5>
-                                    <h6>{{ Auth::user()->email }}</h6>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ route('voyager.profile') }}"><i class="voyager-person"></i> Профайл</a>
-                            </li>
-                            <li>
-                                <a href="/user/logout"><i class="voyager-power"></i> Гарах</a>
-                            </li>
-                        </ul>
+                                    <a href="/user/logout" style="margin-right:20px"> Гарах </a>
                     </li>
                 </ul>
             </div>
@@ -122,7 +91,7 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
             <nav class="navbar navbar-default" role="navigation">
                 <div class="side-menu-container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="{{ route('voyager.dashboard') }}">
+                        <a class="navbar-brand" style="background:#fc7100">
                             <div class="icon voyager-helm"></div>
                             <div class="title">{{Voyager::setting('admin_title')}}</div>
                         </a>
@@ -131,58 +100,24 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
                         </button>
                     </div><!-- .navbar-header -->
 
-                    <div class="panel widget center bgimage"
-                         style="background-image:url({{ Voyager::image( Voyager::setting('admin_bg_image'), config('voyager.assets_path') . '/images/bg.jpg' ) }});">
-                        <div class="dimmer"></div>
-                        <div class="panel-content">
-                            <img src="{{ $user_avatar }}" class="avatar" alt="{{ Auth::user()->name }} avatar">
-                            <h4>{{ ucwords(Auth::user()->name) }}</h4>
-                            <p>{{ Auth::user()->email }}</p>
-
-                            <a href="{{ route('voyager.profile') }}" class="btn btn-primary">Профайл</a>
-                            <div style="clear:both"></div>
-                        </div>
-                    </div>
-
                     <ul class="nav navbar-nav">
-                      <li class="active">
+                      <li id="usermenu_1">
                         <a href="/user/dashboard" target="_self">
                           <span class="icon voyager-home"></span>
                           <span class="title">Нүүр</span>
                         </a>
                       </li>
-                      <li class="dropdown">
-                        <a
-                          data-toggle="collapse"
-                          href="#khereglsel-dropdown-element"
-                          target="_self"
-                          class=""
-                          aria-expanded="true">
-                          <span class="icon voyager-wallet"></span>
-                          <span class="title">Цахим сонин</span>
+                      <li id="usermenu_2">
+                        <a href="/user/news/list" target="_self">
+                          <span class="icon voyager-list"></span>
+                          <span class="title">Нийт сонин</span>
                         </a>
-                        <div
-                          id="khereglsel-dropdown-element"
-                          class="panel-collapse collapse in"
-                          aria-expanded="true"
-                          style="">
-                          <div class="panel-body">
-                            <ul class="nav navbar-nav">
-                              <li>
-                                <a href="/user/news/list" target="_self">
-                                  <span class="icon voyager-list"></span>
-                                  <span class="title">Нийт сонин</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="{{route('myNews')}}" target="_self">
-                                  <span class="icon voyager-data"></span>
-                                  <span class="title">Захиалсан сонин</span>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
+                      </li>
+                      <li id="usermenu_3">
+                        <a href="{{route('myNews')}}" target="_self">
+                          <span class="icon voyager-data"></span>
+                          <span class="title">Захиалсан сонин</span>
+                        </a>
                       </li>
                     </ul>
                 </nav>
@@ -218,6 +153,11 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
 <script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/app.js"></script>
 <script type="text/javascript" src="{{ config('voyager.assets_path') }}/lib/js/toastr.min.js"></script>
 <script>
+    @if(isset($usermenu))
+    $(document).ready(function(){
+      $("#{{$usermenu}}").addClass("active");
+    });
+    @endif
             @if(Session::has('message'))
     var type = "{{ Session::get('alert-type', 'info') }}";
     switch (type) {
