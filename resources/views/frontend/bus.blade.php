@@ -2,7 +2,7 @@
 
 @section('content')
 <section id="content" class="eight column row pull-left">
-  <h4 class="cat-title mb25">Зар оруулах хэсэг</h4>
+  <h4 class="cat-title mb25">Бизнес зар оруулах хэсэг</h4>
 
   <!-- Posts -->
   <section class="row">
@@ -10,21 +10,11 @@
 
     <article class="post six column">
       <div class="contact-form comment cleafix">
-        <form action="{{route('zarAdd')}}" method="post">
+        <form action="{{route('busAdd')}}" method="post" enctype="multipart/form-data">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <table style="width:735px; text-align: right;">
                 <tbody>
 
-                  <tr style="widht:100px">
-                      <th><label for="catgory">Зарын ангилал:</label></th>
-                      <td>
-                          <select name="category" id="category" style="width:200px">
-                              <option value="0">------------ Сонгох ------------------</option>
-                              <option value="1">Ажилд авна</option>
-                              <option value="2">Ажил хайж байна</option>
-                          </select>
-                      </td>
-                  </tr>
                     <tr>
                         <th><label for="title">Зарын гарчиг:</label></th>
                         <td><input type="text" name="title" id="title" value=""></td>
@@ -34,13 +24,14 @@
                         <td><textarea rows="5" cols="100" name="address" id="address"></textarea></td>
                     </tr>
                     <tr>
-                        <th><label for="phone">Цалин:</label></th>
-                        <td><input type="text" name="tsalin" id="tsalin" value=""></td>
+                        <th><label for="phone">Зураг:</label></th>
+                        <td><input type="file" name="image" id="image" value=""></td>
                     </tr>
                     <tr>
                         <th><label for="content">Агуулга:</label></th>
                         <td><textarea rows="5" cols="100" name="content" id="content"></textarea></td>
                     </tr>
+
                     <tr>
                         <th><label for="phone">Утас:</label></th>
                         <td><input type="text" name="phone" id="phone" value=""></td>
