@@ -31,15 +31,16 @@
       <div class="post-container">
         <div class="post-content">
           @if($bus->image)
-          <img src="/bus/{{$bus->image}}" alt="" style="height:130px;width:220px;object-fit: cover;float: left;margin-right:20px">
+          <a href="{{ url('/bus/show?id='.$bus->id)}}"><img src="/bus/{{$bus->image}}" alt="" style="height:130px;width:220px;object-fit: cover;float: left;margin-right:20px"></a>
           @else
           @endif
-          <h2 class="post-title"><a href="#">{{$bus->title}}</a><span class="date" style="float: right"><a href="#">{{ date('m сарын d, Y H:i',strtotime($bus->created_at))}}</a></span></h2>
-               <p>{{$bus->body}}</p>
+          <h2 class="post-title"><a href="{{ url('/bus/show?id='.$bus->id)}}">{{$bus->title}}</a><span class="date" style="float: right"><a href="#">{{ date('m сарын d, Y H:i',strtotime($bus->created_at))}}</a></span></h2>
+               <p>{{str_limit($bus->body, 150)}}</p>
           <div class="post-meta">
             <span style="font-size:13px">&nbsp; &nbsp;Утас: {{$bus->phone}} &nbsp; &nbsp;</span>&nbsp;
             <span style="font-size:13px"> &nbsp; &nbsp;Байршил: {{$bus->address}} &nbsp; &nbsp;</span>
           </div>
+            <a href="{{ url('/bus/show?id='.$bus->id)}}">  <button class="pull-right order"> Дэлгэрэнгүй</button> </a>
         </div>
       </div>
     </article>
