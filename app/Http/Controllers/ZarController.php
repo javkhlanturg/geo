@@ -18,6 +18,9 @@ class ZarController extends Controller
     public function jobAdd(){
     return view('frontend.zar');
     }
+    public function zarShow(Request $request){
+      
+    }
     public function zarAdd(Request $request){
       $title = $request->input('title');
       $body = $request->input('content');
