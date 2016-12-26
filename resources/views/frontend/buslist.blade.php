@@ -27,7 +27,7 @@
   <section class="row">
     <!-- Category posts -->
     @foreach($buss as $bus)
-    <article class="post">
+    <article class="post twelve column">
       <div class="post-container">
         <div class="post-content">
           @if($bus->image)

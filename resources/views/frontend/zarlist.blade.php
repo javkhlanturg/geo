@@ -27,21 +27,17 @@
   <section class="row">
     <!-- Category posts -->
     @foreach($zars as $zar)
-    <article class="post">
+      <article class="post twelve column">
       <div class="post-container">
         <div class="post-content">
 
           <h2 class="post-title"><a href="#">{{$zar->title}}</a><span class="date" style="float: right"><a href="#">{{ date('m сарын d, Y H:i',strtotime($zar->created_at))}}</a></span></h2>
                <p>{{$zar->body}}</p>
           <div class="post-meta">
-            <span style="font-size:13px">&nbsp; &nbsp;Утас: {{$zar->phone}} &nbsp; &nbsp;</span>&nbsp;
+              <span style="font-size:13px;">&nbsp; &nbsp;Төрөл: @if($zar->category_id == 1) Ажилд авна @else Ажил хайж байна  @endif &nbsp; &nbsp;</span>&nbsp;
             <span style="font-size:13px"> &nbsp; &nbsp;Цалин: {{$zar->tsalin}}₮ &nbsp; &nbsp;</span>
-            <span style="font-size:13px"> &nbsp; &nbsp;Байршил: {{$zar->address}} &nbsp; &nbsp;</span>
-            @if($zar->category_id === 1)
-            <button class="pull-right order"> Ажилд авна </button>
-            @else
-            <button class="pull-right order"> Ажил хайж байна </button>
-            @endif
+            <span style="font-size:13px">&nbsp; &nbsp;Утас: {{$zar->phone}} &nbsp; &nbsp;</span>&nbsp;
+            <button class="pull-right order"> Дэлгэрэнгүй </button>
           </div>
         </div>
       </div>
