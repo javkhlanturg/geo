@@ -24,6 +24,12 @@ class ZarController extends Controller
       return view('frontend.zarshow')
       ->with('zarshow',$zarshow);
     }
+    public function busShow(Request $request){
+      $id = $request->input('id');
+      $busshow = Business::find($id);
+      return view('frontend.busShow')
+      ->with('busshow',$busshow);
+    }
     public function zarAdd(Request $request){
       $title = $request->input('title');
       $body = $request->input('content');

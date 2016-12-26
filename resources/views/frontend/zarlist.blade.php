@@ -31,13 +31,13 @@
       <div class="post-container">
         <div class="post-content">
 
-          <h2 class="post-title"><a href="#">{{$zar->title}}</a><span class="date" style="float: right"><a href="#">{{ date('m сарын d, Y H:i',strtotime($zar->created_at))}}</a></span></h2>
-               <p>{{$zar->body}}</p>
+          <h2 class="post-title"><a href="{{ url('/jobs/show?id='.$zar->id)}}">{{$zar->title}}</a><span class="date" style="float: right"><a href="#">{{ date('m сарын d, Y H:i',strtotime($zar->created_at))}}</a></span></h2>
+               <p>{{str_limit($zar->body, 150)}}</p>
           <div class="post-meta">
               <span style="font-size:13px;">&nbsp; &nbsp;Төрөл: @if($zar->category_id == 1) Ажилд авна @else Ажил хайж байна  @endif &nbsp; &nbsp;</span>&nbsp;
             <span style="font-size:13px"> &nbsp; &nbsp;Цалин: {{$zar->tsalin}}₮ &nbsp; &nbsp;</span>
             <span style="font-size:13px">&nbsp; &nbsp;Утас: {{$zar->phone}} &nbsp; &nbsp;</span>&nbsp;
-            <button class="pull-right order"> Дэлгэрэнгүй </button>
+          <a href="{{ url('/jobs/show?id='.$zar->id)}}">  <button class="pull-right order"> Дэлгэрэнгүй</button> </a>
           </div>
         </div>
       </div>
