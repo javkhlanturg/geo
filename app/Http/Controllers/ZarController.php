@@ -19,7 +19,10 @@ class ZarController extends Controller
     return view('frontend.zar');
     }
     public function zarShow(Request $request){
-      
+      $id = $request->input('id');
+      $zarshow = Zar::find($id);
+      return view('frontend.zarshow')
+      ->with('zarshow',$zarshow);
     }
     public function zarAdd(Request $request){
       $title = $request->input('title');

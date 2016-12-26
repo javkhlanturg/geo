@@ -19,6 +19,7 @@ Route::get('/e-news','EnewsController@newslist')->name('newslist');
 Route::get('/jobs','ZarController@index')->name('zar');
 Route::get('/jobs/add','ZarController@jobAdd')->name('jobAdd');
 Route::post('/zar/add','ZarController@zarAdd')->name('zarAdd');
+Route::get('/zar/show/{id}','ZarController@zarShow')->name('zarShow');
 Route::get('/business-news','ZarController@buslist');
 Route::get('/busA','ZarController@busA');
 Route::post('/bus/add','ZarController@busAdd')->name('busAdd');
