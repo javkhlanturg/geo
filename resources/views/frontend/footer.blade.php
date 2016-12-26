@@ -1,3 +1,15 @@
+<style>
+.footermenu{
+  color:#fff;
+  font-size:16px;
+  font-family: "MAKHelios";
+  line-height: 15px;
+  font-weight: normal;
+}
+.footermenu:hover{
+  color:#D7D6D6
+}
+</style>
 <footer class="row clearfix">
   				<!-- Footer widgets -->
   				<!-- End Footer widgets -->
@@ -7,7 +19,7 @@
             <?php $pages = TCG\Voyager\Models\Page::where('status','ACTIVE')->get();?>
             <div class="right" style="margin-right:50px">
               @foreach($pages as $_page)
-              <a href="/page/{{$_page->slug}}" style="color:#fff; font-size:14px;">{{$_page->title}}</a> \
+              <a href="/page/{{$_page->slug}}" class="footermenu">{{$_page->title}}</a>&nbsp; | &nbsp;
               @endforeach
             </div>
   				</div>
