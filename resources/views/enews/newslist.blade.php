@@ -25,7 +25,7 @@
   <section class="row">
     <!-- Category posts -->
     @foreach($posts as $post)
-    <article class="post">
+    <article class="post twelve column">
       <div class="post-container">
         <div class="post-content">
           <img src="/{{$post->ifimage}}" alt="" style="height:130px;width:220px;object-fit: cover;float: left;margin-right:20px">
