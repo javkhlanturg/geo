@@ -4,9 +4,10 @@
 
   				<div class="copyright clearfix">
   					© Copyright 2016 Геологи, Уул уурхай мэдээ сонин
-            <div class="pull-right" style="font-size:14px">
+            <?php $pages = TCG\Voyager\Models\Page::where('status','ACTIVE')->get();?>
+            <div class="right" style="margin-right:50px">
               @foreach($pages as $_page)
-              <a href="/page/{{$_page->slug}}" style="color:#fff">{{$_page->title}}</a> \
+              <a href="/page/{{$_page->slug}}" style="color:#fff; font-size:14px;">{{$_page->title}}</a> \
               @endforeach
             </div>
   				</div>
