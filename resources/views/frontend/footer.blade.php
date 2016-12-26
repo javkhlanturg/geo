@@ -16,7 +16,7 @@
 
   				<div class="copyright clearfix">
   					© Copyright 2016 Геологи, Уул уурхай мэдээ сонин
-            <?php $pages = TCG\Voyager\Models\Page::where('status','ACTIVE')->get();?>
+            <?php $pages = TCG\Voyager\Models\Page::where('status','ACTIVE')->orderBy('updated_at','asc')->get();?>
             <div class="right" style="margin-right:50px">
               @foreach($pages as $_page)
               <a href="/page/{{$_page->slug}}" class="footermenu">{{$_page->title}}</a>&nbsp; | &nbsp;

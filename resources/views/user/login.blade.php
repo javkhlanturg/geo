@@ -128,7 +128,7 @@
         #login_section .content {
             position: absolute;
             top: 50%;
-            margin-top: -132px;
+            margin-top: -172px;
         }
 
         #login input {
@@ -224,8 +224,41 @@
                     Нэвтрэх нэр эсвэл нууц үг буруу байна
                 </div>
             @endif
+            <hr style="color:#62A8EA"/>
+              <button class="btn" style="margin-top:10px; background-color:#8D909B" data-toggle="modal" data-target="#OrderQueue">
+                  Төлбөр төлөх боломжууд
+              </button>
+              <button class="btn" style="margin-top:5px; background-color:#8D909B" >
+                  Ашиглах заавар
+              </button>
         </div>
     </div>
+
+    <div class="modal fade in" id="OrderQueue" tabindex="-1" role="dialog" aria-labelledby="OrderQueueLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="OrderQueueLabel">Төлбөрөө хэрхэн хийх вэ</h4>
+            </div>
+            <div class="modal-body">
+              <div class="payment_info">
+   <p>Төлбөрөө төлөх боломжуудыг дор санал болгож байна.</p>
+  <ul>
+    <li>Хэрэглэгчийн нэр, нууц үгээрээ нэвтэрч орон Голомт, Худалдаа хөгжлийн банк, Хаан банкны аль нэгээр картын гүйлгээ хийж шууд захиалан авах.</li>
+    <li>"Өдрийн сонин"-ы  1102028377  (Хүлээн авагчийн нэр: ӨДРИЙН МЭДЭЭ ХХК гэж бичих) гэсэн Голомт банкны данс руу төлбөрөө шилжүүлээд захиалан авах
+  (Ингэхдээ төлбөр төлсөн баримтаа udriinsonin@dnn.mn мэйл хаяг руу явуулах эсвэл 70134164 дугаар руу факсаар илгээхийг сануулъя).</li>
+  <li>Сонины редакци дээр өөрийн биеэр ирж төлбөрөө тушаан захиалан авах. </li>
+  </ul>
+  <p>Дэлгэрэнгүй мэдээлэл шаардлагатай бол 88071920 дугаар руу холбогдоно уу. </p>
+  </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Хаах</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script>
         login_btn = document.getElementById("voyager-login-btn");

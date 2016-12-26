@@ -2,7 +2,7 @@
 @section('css')
 <style>
  .order{
-   background:#fc7100; color:#fff; border:0px; padding:5px
+   background:#fc7100; color:#fff !important; border:0px; padding:5px
  }
  .order:hover{
    padding:6px
@@ -34,7 +34,8 @@
           <div class="post-meta">
             <span class="date"><a href="#">{{ date('m сарын d, Y',strtotime($post->created_at))}}</a></span>&nbsp;
             <span style="font-size:13px"> &nbsp; &nbsp;Үнэ: {{number_format($post->price, 2)}}₮ &nbsp; &nbsp;</span>
-            <button class="pull-right order"> Захиалах </button>
+
+            <a @if(!\Auth::check()) href="/login" @endif class="pull-right order"> Захиалах </a>
           </div>
         </div>
       </div>
