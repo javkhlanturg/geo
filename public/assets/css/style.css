@@ -389,7 +389,7 @@ body > header .inner-header {
 
 .post-container {
     margin: 10px 0 15px 0;
-    height: 104px;
+    /*height: 104px;*/
     overflow: hidden;
 }
 

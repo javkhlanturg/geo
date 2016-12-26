@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comments;
+use TCG\Voyager\Models\Page;
 class PostController extends Controller
 {
   public function postList($slug){
@@ -30,5 +31,13 @@ class PostController extends Controller
       $comments = Comments::where('postid', $post->id)->get();
       $newss = \TCG\Voyager\Models\Post::orderBy('created_at', 'desc')->limit('3')->get();
       return view('frontend.viewpost', ['post'=>$post, 'menu'=>$menu, 'comments'=>$comments, 'newss'=>$newss]);
+  }
+
+  public function viewPage($slug){
+    $page = Page::where('slug', $slug)->first();
+    if(!$page){
+      abort(404);
+    }
+    return view('frontend.pageview',['page'=>$page]);
   }
 }

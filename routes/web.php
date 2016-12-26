@@ -33,5 +33,6 @@ Route::get('/user/news/view/{newsid}','DashboardController@readNews')->name('rea
 Route::get('/user/news/m/list','DashboardController@myNews')->name('myNews')->middleware('auth');
 Route::get('/user/logout','LoginController@logout');
 Route::get('/user/dashboard','DashboardController@index')->name('userDashboard')->middleware('auth');
+Route::get('/page/{slug}','PostController@viewPage')->name('viewPage');
 Route::get('/{slug}','PostController@postList')->name('postList');
 Route::get('/{slug}/{postid}','PostController@post')->name('viewPost');
