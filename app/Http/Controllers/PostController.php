@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comments;
 use TCG\Voyager\Models\Page;
+use App\Banners;
 class PostController extends Controller
 {
   public function postList($slug){
@@ -39,5 +40,21 @@ class PostController extends Controller
       abort(404);
     }
     return view('frontend.pageview',['page'=>$page]);
+  }
+
+  public function action(Request $request){
+    switch ($request->input('action')) {
+      case 'comcust': return $this->comCustList();
+
+      default:
+        # code...
+        break;
+    }
+  }
+
+  public function comCustList(){
+    $list = Banners::where('banner_position', 'LIKE', 'comcust_%')->orderBy('banner_position','asc')->limit(9)->get();
+    $html = view('frontend.comcustitem', ['list'=>$list]);
+    return response()->json(['list'=>$html->render()]);
   }
 }
