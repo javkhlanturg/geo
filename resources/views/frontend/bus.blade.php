@@ -12,7 +12,7 @@
       <div class="contact-form comment cleafix">
         <form action="{{route('busAdd')}}" method="post" enctype="multipart/form-data">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <table style="width:735px; text-align: right;">
+            <table style="width:615px; text-align: right;">
                 <tbody>
 
                     <tr>
@@ -44,7 +44,7 @@
 
                     <tr>
                         <th>&nbsp;</th>
-                        <td><input type="submit" value="Илгээх »" onclick="return confx();"></td>
+                        <td><input type="submit" value="Зар нэмэх »" onclick="return confx();"></td>
                     </tr>
                 </tbody>
             </table>

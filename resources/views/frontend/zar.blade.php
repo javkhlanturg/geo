@@ -12,7 +12,7 @@
       <div class="contact-form comment cleafix">
         <form action="{{route('zarAdd')}}" method="post">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <table style="width:735px; text-align: right;">
+            <table style="width:615px; text-align: right;">
                 <tbody>
 
                   <tr style="widht:100px">
@@ -35,7 +35,8 @@
                     </tr>
                     <tr>
                         <th><label for="phone">Цалин:</label></th>
-                        <td><input type="text" name="tsalin" id="tsalin" value=""></td>
+                        <td><input type="text" name="tsalin" id="tsalin" value=""><input type="checkbox" name="tsalin" id="tsalin" value="Тохиролцоно"> Тохиролцоно</td>
+
                     </tr>
                     <tr>
                         <th><label for="content">Агуулга:</label></th>
@@ -53,7 +54,7 @@
 
                     <tr>
                         <th>&nbsp;</th>
-                        <td><input type="submit" value="Илгээх »" onclick="return confx();"></td>
+                        <td><input type="submit" value="Зар нэмэх »" onclick="return confx();"></td>
                     </tr>
                 </tbody>
             </table>
