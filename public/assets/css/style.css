@@ -139,7 +139,7 @@ body > header .inner-header {
 /* =  Container
 /*-------------------------------------------------*/
 .container {
-    max-width: 1170px;
+    max-width: 990px;
     background: #fff;
     margin-bottom: 50px;
 }
@@ -149,7 +149,7 @@ body > header .inner-header {
 }
 
 .container .inner-container {
-    width: 1140px;
+    width: 960px;
     margin: 22.5px auto 0 auto;
 }
 
@@ -177,7 +177,7 @@ body > header .inner-header {
 #main-menu > ul > li > a {
     display: block;
     color: #fff;
-    padding: 12px 13px;
+    padding: 12px 10px;
     border-right: 1px solid #000;
     line-height: normal;
 }
@@ -630,14 +630,14 @@ footer .widget-title {
 }
 
 #sidebar .widget {
-    width: 350px;
+    width: 298px;
 }
 
 /*-------------------------------------------------*/
 /* =  Tabs Widget
 /*-------------------------------------------------*/
 .tabs-widget {
-    width: 348px !important;
+    width: 298px !important
     padding: 0px !important;
     border-top: none;
 }
@@ -648,7 +648,7 @@ footer .widget-title {
 
 .tabs-widget .tab-links li {
     float: left;
-    width: 122px;
+    width: 96px;
     margin-left: 4px;
     margin-bottom: -1px;
     background: #fff;
@@ -656,7 +656,7 @@ footer .widget-title {
 
 .tabs-widget .tab-links li:first-child {
     margin-left: 0px;
-    width: 348px;
+    width: 298px;
 
 }
 
@@ -818,8 +818,8 @@ li.widget_ads_small > ul {
 
 li.widget_ads_small li {
     float: left;
-    width: 169px;
-    height: 150px;
+    width: 142px;
+    height: 142px
     margin: 0 11px 11px 0;
     margin: 0 8px 8px 0\0/;
     overflow: hidden;
