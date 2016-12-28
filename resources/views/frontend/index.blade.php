@@ -35,3 +35,14 @@
 
 
 @endsection
+@section('javascript')
+<script>
+  $(document).ready(function(){
+    $.post("{{route('mvAction')}}", {
+      action:'comcust', _token:'{{ csrf_token() }}'
+    },function(data){
+      $('#comcustlist').html(data.list);
+    })
+  });
+</script>
+@endsection

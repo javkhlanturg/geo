@@ -123,7 +123,7 @@ input::-webkit-input-placeholder {
 						</div>
 
 						<div class="form-group">
-							<button type="submit" style="border-radius: 0;" class="btn btn-primary btn-block login-button">Нэвтрэх</button>
+							<button type="submit" style="border-radius: 0;background-color:#fc7100; border-color: #BD5800;" class="btn btn-primary btn-block login-button">Нэвтрэх</button>
               @if (count($errors))
               <br/>
                <div class="error-login">
@@ -147,7 +147,7 @@ input::-webkit-input-placeholder {
             <h4 class="modal-title" id="myModalLabel">Төлбөрөө хэрхэн хийх вэ</h4>
           </div>
           <div class="modal-body">
-            <div class="alert-info" style="padding:10px">
+            <div class="alert-info" style="padding:10px;background-color: #fc7100;color: #F7EFE8;">
              {!! Voyager::setting('payment_info') !!}
             </div>
                       </div>
