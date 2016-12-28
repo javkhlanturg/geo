@@ -28,7 +28,7 @@
       <li>
           <div class="comment-main-level">
               <!-- Avatar -->
-              <div class="comment-avatar"><img src="\assets\images\comment-02.jpg" class="img-circle" alt=""></div>
+              <div  class="author-avatar"><img src="\assets\images\avatar.jpg" class="img-circle" alt=""></div>
               <!-- Contenedor del Comentario -->
               <div class="comment-box">
                   <div class="comment-head">
