@@ -79,6 +79,9 @@
 	$('#scrolled').slimScroll({
 	  height: '446px'
 	});
+	$('#zarscrolled').slimScroll({
+	  height: '446px'
+	});
 	</script>
 	@yield('javascript')
 </body>

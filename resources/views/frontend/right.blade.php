@@ -52,8 +52,8 @@
               </li>
             </ul>
              <?php $zars = App\Zar::orderBy('created_at', 'desc')->limit('10')->get(); ?>
-            <div id="popular-tab" id="scrolled" style="height:446px; overflow:auto">
-              <ul>
+            <div id="popular-tab">
+              <ul id="zarscrolled" style="height:446px; overflow:auto">
                 @foreach($zars as $zar)
                 <li>
                   <h3><a href="#">{{str_limit($zar->title,25)}} <div class="email" style="float:right">{{$zar->phone}}</div></a></h3>
