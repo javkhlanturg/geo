@@ -74,6 +74,12 @@
 	<script type="text/javascript" src="\assets\js\jcarousel.js"></script>
 	<script type="text/javascript" src="\assets\js\jquery.masonry.min.js"></script>
 	<script type="text/javascript" src="\assets\js\script.js"></script>
+	<script type="text/javascript" src="\assets\js\jquery.slimscroll.min.js"></script>
+	<script type="text/javascript">
+	$('#scrolled').slimScroll({
+	  height: '446px'
+	});
+	</script>
 	@yield('javascript')
 </body>
 </html>

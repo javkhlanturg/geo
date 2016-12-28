@@ -1,12 +1,12 @@
 <aside id="sidebar" class="four column pull-right">
-   <?php $newss = \TCG\Voyager\Models\Post::orderBy('created_at', 'desc')->limit('5')->get(); ?>
+   <?php $newss = \TCG\Voyager\Models\Post::orderBy('created_at', 'desc')->limit('10')->get(); ?>
   <ul class="no-bullet">
     <li class="widget tabs-widget clearfix">
       <ul class="tab-links no-bullet clearfix">
         <li class="active"><a href="#popular-tab">Сүүлд нэмэгдсэн мэдээ</a></li>
       </ul>
       <div id="popular-tab">
-        <ul>
+        <ul id="scrolled" style="height:446px; overflow:auto">
           @foreach($newss as $news)
           <li>
             <a href="/{{$news->category['slug']}}/{{$news->id}}"><img alt="" src="/{{$news->image}}" style="width:100px;object-fit: cover;float: left;margin-right:20px"></a>
@@ -51,15 +51,14 @@
                 <a href="{{ url('/zar') }}">Шинэ зар</a>
               </li>
             </ul>
-             <?php $zars = App\Zar::orderBy('created_at', 'desc')->limit('5')->get(); ?>
-            <div id="popular-tab">
+             <?php $zars = App\Zar::orderBy('created_at', 'desc')->limit('10')->get(); ?>
+            <div id="popular-tab" id="scrolled" style="height:446px; overflow:auto">
               <ul>
                 @foreach($zars as $zar)
                 <li>
-                  <h3><a href="#">{{$zar->title}}</a></h3>
-                  <div class="content">{{$zar->body}}</div>
-                  <div class="email">{{$zar->email}}</div>
-                  <div class="phone">{{$zar->phone}}</div>
+                  <h3><a href="#">{{str_limit($zar->title,25)}} <div class="email" style="float:right">{{$zar->phone}}</div></a></h3>
+                  <div class="content">{{str_limit($zar->body,80)}}</div>
+                   <div class="phone" style="float:right">{{$zar->address}}</div>
                 </li></hr>
                 @endforeach
               </ul>
