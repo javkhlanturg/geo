@@ -9,6 +9,15 @@
     <form action="{{route('addRegister')}}" method="post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div id="register">
+        @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
           <span>Хэрэглэгчийн нэр<input name="name" type="text" placeholder="Хэрэглэгчийн нэр"></span><br/>
           <span>Мэйл хаяг<input name="email" type="text" placeholder="Мэйл хаяг"></span><br/>
           <span>Нууц үг<input name="password" type="password" placeholder="Нууц үг"></span><br/>

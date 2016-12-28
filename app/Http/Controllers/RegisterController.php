@@ -8,6 +8,8 @@ use TCG\Voyager\Models\Role;
 use TCG\Voyager\Models\User;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
+use Validator;
+use Messages;
 
 class RegisterController extends Controller
 {
@@ -16,7 +18,16 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request){
-      $email = $request->input('email');
+  //    $email = $request->input('email');
+  $v = Validator::make($request->all(), [
+      'email' => 'required|email|unique:users'
+    ]);
+
+    if ($v->fails())
+    {
+        return redirect()->back()->withErrors($v->errors());
+    }
+
 
       $user =  new User;
       $user->name = $request->input('name');
@@ -26,6 +37,8 @@ class RegisterController extends Controller
       $user->avatar = 'users/default.png';
       $user->role_id = '2';
       $user->save();
-      return redirect('/login');
+      return redirect('/login')
+      ;
     }
+
 }
