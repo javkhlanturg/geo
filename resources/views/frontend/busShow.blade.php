@@ -49,5 +49,17 @@
 
 
   </section>
+
+  <div class="pagenation clearfix">
+
+  </div>
+
   </section>
+@endsection
+@section('javascript')
+<script>
+$(document).ready(function(){
+  var data = $('ul.pagination').removeClass().addClass("no-bullet");
+})
+</script>
 @endsection

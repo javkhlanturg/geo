@@ -35,10 +35,10 @@
           <div class="post-meta" style="font-family: arial;font-size: 13px;">
               <span class="date" >&nbsp;{{ date('m сарын d, Y',strtotime($zarshow->created_at)) }}</span>
               <span> &nbsp; &nbsp;Цалин: {{$zarshow->tsalin}}₮ &nbsp; &nbsp;</span>
-              <span>&nbsp; &nbsp;Утас: {{$zarshow->phone}} &nbsp; &nbsp;</span>&nbsp;
+              <span>&nbsp; &nbsp;Байршил: {{$zarshow->address}} &nbsp; &nbsp;</span>&nbsp;
           </div>
            <p>{{$zarshow->body}}</p>
-           <span style="float:right;font-family: arial;font-size: 13px;">&nbsp; &nbsp;Байршил: {{$zarshow->address}} &nbsp; &nbsp;</span>&nbsp;
+           <span style="float:right;font-family: arial;font-size: 13px;">&nbsp; &nbsp; Утас: {{$zarshow->phone}} &nbsp; &nbsp;</span>&nbsp;
         </div>
       </div>
     </article>
@@ -47,4 +47,11 @@
 
   </section>
   </section>
-@endsection
+  @endsection
+  @section('javascript')
+  <script>
+  $(document).ready(function(){
+    var data = $('ul.pagination').removeClass().addClass("no-bullet");
+  })
+  </script>
+  @endsection
