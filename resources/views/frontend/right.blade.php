@@ -24,7 +24,7 @@
 
       <h3 class="widget-title">- Сурталчилгаа -</h3>
       <div class="clearfix">
-        <a href="/{{$add_banner->url}}"><img src="/{{$add_banner->bannerpath}}" alt=""></a>
+        <a href="{{$add_banner->url}}"><img src="/{{$add_banner->bannerpath}}" alt=""></a>
       </div>
     </li>
     <li class="widget widget_facebook_box clearfix">
@@ -39,10 +39,10 @@
             <?php $logo_left_bottom = App\Banners::where('id', 9)->first(); ?>
             <?php $logo_right_bottom = App\Banners::where('id', 10)->first(); ?>
 						<ul class="no-bullet clearfix">
-							<li><a href="/{{$logo_left_top->url}}"><img alt="" src="/{{$logo_left_top->bannerpath}}"></a></li>
-							<li><a href="/{{$logo_left_top->url}}"><img alt="" src="/{{$logo_right_top->bannerpath}}"></a></li>
-							<li><a href="/{{$logo_left_bottom->url}}"><img alt="" src="/{{$logo_left_bottom->bannerpath}}"></a></li>
-							<li><a href="/{{$logo_right_bottom->url}}"><img alt="" src="/{{$logo_right_bottom->bannerpath}}"></a></li>
+							<li><a href="{{$logo_left_top->url}}"><img alt="" src="/{{$logo_left_top->bannerpath}}"></a></li>
+							<li><a href="{{$logo_left_top->url}}"><img alt="" src="/{{$logo_right_top->bannerpath}}"></a></li>
+							<li><a href="{{$logo_left_bottom->url}}"><img alt="" src="/{{$logo_left_bottom->bannerpath}}"></a></li>
+							<li><a href="{{$logo_right_bottom->url}}"><img alt="" src="/{{$logo_right_bottom->bannerpath}}"></a></li>
 						</ul>
 					</li>
           <li class="widget tabs-widget clearfix">
