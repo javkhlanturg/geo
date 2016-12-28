@@ -1,274 +1,163 @@
 <!DOCTYPE html>
-<html class="no-js css-menubar" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="admin login">
-    <meta name="author" content="">
-    <title>Admin Login</title>
-    {{-- Voyager CSS --}}
-    <link rel="stylesheet" href="{{ config('voyager.assets_path') }}/css/voyager.css">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
-    <link href="https://file.myfontastic.com/QLbQY2QVvDNQgGeBRf7fWh/icons.css" rel="stylesheet">
+<html lang="en">
+    <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/vendor/tcg/voyager/assets/lib/css/bootstrap.min.css">
 
+		<!-- Website CSS style -->
     <style>
-        .login-page {
-            background-image: url('{{ Voyager::image( Voyager::setting("admin_bg_image"), config('voyager.assets_path') . "/images/bg.jpg" ) }}');
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-        }
+    /*
+/* Created by Filipe Pina
+ * Specific styles of signin, register, component
+ */
+/*
+ * General styles
+ */
 
-        .logo-img {
-            width: 100px;
-            z-index: 999;
-            position: relative;
-            float: left;
-            -webkit-animation: spin 1s linear 1;
-            -moz-animation: spin 1s linear 1;
-            animation: spin 1s linear 1;
-        }
+body, html{
+     height: 100%;
+ 	background-repeat: no-repeat;
+ 	background-color: #d3d3d3;
+ 	font-family: 'Oxygen', sans-serif;
+}
 
-        #bgdim {
-            background: rgba(38, 50, 56, .6);
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
+.main{
+ 	margin-top: 70px;
+}
 
-        #login_section {
-            width: 380px;
-            height: 100%;
-            position: absolute;
-            right: 0;
-            top: 0;
-            text-align: center;
-            background: #fff;
-            z-index: 99;
-        }
+h1.title {
+	font-size: 30px;
+	font-family: 'Passion One', cursive;
+	font-weight: 300;
+}
 
-        #title_section {
-            width: auto;
-            position: absolute;
-            margin-left: 120px;
-            top: 50%;
-            margin-top: -50px;
-        }
+hr{
+	width: 10%;
+	color: #fff;
+}
 
-        #title_section .copy {
-            float: left;
-        }
+.form-group{
+	margin-bottom: 15px;
+}
 
-        #title_section h1 {
-            display: inline-block;
-            vertical-align: middle;
-            color: #fff;
-            z-index: 9999;
-            position: relative;
-            text-transform: uppercase;
-            font-size: 50px;
-            font-weight: 400;
-            top: -10px;
-            line-height: 45px;
-            margin: 20px 0 0 20px;
-        }
+label{
+	margin-bottom: 15px;
+}
 
-        #title_section p {
-            color: #fff;
-            font-size: 20px;
-            max-width: 650px;
-            opacity: .6;
-            position: relative;
-            z-index: 99;
-            font-weight: 200;
-            margin-top: 0;
-            left: 25px;
-        }
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
 
-        #login_section h2 {
-            text-align: left;
-            margin-left: 50px;
-            font-weight: 200;
-            margin-bottom: 0;
-            margin-top: 3px;
-            color: #444;
-        }
+.main-login{
+ 	background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 
-        #login_section .btn {
-            background: #62A8EA;
-            border-radius: 0;
-            color: #fff;
-            width: 380px;
-            margin-left: 0;
-            display: block;
-            text-align: left;
-            padding: 15px 20px 15px 50px;
-            border-width: 0;
-        }
+}
 
-        .btn-login {
-            text-decoration: none;
-        }
+.main-center{
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+ 	max-width: 330px;
+    padding: 40px 40px;
 
-        .btn-login i {
-            border-right: 0;
-            position: relative;
-            top: 2px;
-        }
+}
 
-        #login_section p {
-            font-weight: 100;
-            margin-top: 10px;
-            float: left;
-            margin-left: 50px;
-        }
+.login-button{
+	margin-top: 5px;
+}
 
-        #login_section .content {
-            position: absolute;
-            top: 50%;
-            margin-top: -172px;
-        }
+.login-register{
+	font-size: 11px;
+	text-align: center;
+}
 
-        #login input {
-            padding: 20px 50px;
-            border: 0;
-            background: #f5f5f5;
-            border-radius: 0;
-            float: left;
-            margin-left: 0;
-            margin-bottom: 10px;
-            width: 278px;
-            font-size: 12px;
-            font-weight: 200;
-        }
-
-        textarea, input, button {
-            outline: none;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        .btn-loading {
-            width: 16px;
-            height: 16px;
-            float: left;
-            margin: 3px 3px 0 -1px;
-            -webkit-animation: spin 0.4s linear infinite;
-            -moz-animation: spin 0.4s linear infinite;
-            animation: spin 0.4s linear infinite;
-        }
-
-        .login_loader {
-            display: none;
-        }
-
-        .error-login {
-            padding: 1em;
-            text-align: center;
-            color: #DC143C;
-        }
-
-        @-moz-keyframes spin {
-            100% {
-                -moz-transform: rotate(90deg);
-            }
-        }
-
-        @-webkit-keyframes spin {
-            100% {
-                -webkit-transform: rotate(90deg);
-            }
-        }
-
-        @keyframes spin {
-            100% {
-                -webkit-transform: rotate(90deg);
-                transform: rotate(90deg);
-            }
-        }
     </style>
-</head>
-<body class="login-page">
-    <div id="bgdim"></div>
 
-    <div id="title_section">
-        <div class="copy">
-            <h1>{{ Voyager::setting('admin_title', 'Voyager') }}</h1>
-            <p>{{ Voyager::setting('login_desc', 'Welcome to Voyager. The Missing Admin for Laravel') }}</p>
-        </div>
-        <div style="clear:both"></div>
-    </div>
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
-    <div id="login_section">
-        <div class="content">
-            <h2>Нэвтрэх хэсэгт</h2>
-            <p>Доорх талбарыг бөглөнө үү:</p>
-            <div style="clear:both"></div>
-            <form action="/login" method="POST" id="login">
-                {{ csrf_field() }}
-                <input type="text" class="form-control" name="email" placeholder="Имэйл хаяг" value="{{ old('email') }}">
-                <input type="password" class="form-control" name="password" placeholder="Нууц үг">
-                <button class="btn btn-primary btn-login" id="voyager-login-btn">
-                    <span class="login_text"><i class="voyager-lock"></i> Нэвтрэх</span>
-                    <span class="login_loader">
-                        <img class="btn-loading" src="{{ config('voyager.assets_path') }}/images/logo-icon-light.png"> Нэвтэрж байна
-                    </span>
-                </button>
-            </form>
-            @if (count($errors))
-                <div class="error-login">
-                    Нэвтрэх нэр эсвэл нууц үг буруу байна
-                </div>
-            @endif
-            <hr style="color:#62A8EA"/>
-              <button class="btn" style="margin-top:10px; background-color:#8D909B" data-toggle="modal" data-target="#OrderQueue">
-                  Төлбөр төлөх боломжууд
-              </button>
-              <button class="btn" style="margin-top:5px; background-color:#8D909B" >
-                  Ашиглах заавар
-              </button>
-        </div>
-    </div>
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
-    <div class="modal fade in" id="OrderQueue" tabindex="-1" role="dialog" aria-labelledby="OrderQueueLabel" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-              <h4 class="modal-title" id="OrderQueueLabel">Төлбөрөө хэрхэн хийх вэ</h4>
-            </div>
-            <div class="modal-body">
-              <div class="payment_info">
-   <p>Төлбөрөө төлөх боломжуудыг дор санал болгож байна.</p>
-  <ul>
-    <li>Хэрэглэгчийн нэр, нууц үгээрээ нэвтэрч орон Голомт, Худалдаа хөгжлийн банк, Хаан банкны аль нэгээр картын гүйлгээ хийж шууд захиалан авах.</li>
-    <li>"Өдрийн сонин"-ы  1102028377  (Хүлээн авагчийн нэр: ӨДРИЙН МЭДЭЭ ХХК гэж бичих) гэсэн Голомт банкны данс руу төлбөрөө шилжүүлээд захиалан авах
-  (Ингэхдээ төлбөр төлсөн баримтаа udriinsonin@dnn.mn мэйл хаяг руу явуулах эсвэл 70134164 дугаар руу факсаар илгээхийг сануулъя).</li>
-  <li>Сонины редакци дээр өөрийн биеэр ирж төлбөрөө тушаан захиалан авах. </li>
-  </ul>
-  <p>Дэлгэрэнгүй мэдээлэл шаардлагатай бол 88071920 дугаар руу холбогдоно уу. </p>
-  </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Хаах</button>
-            </div>
+		<title>Admin</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row main">
+				<div class="panel-heading">
+	               <div class="panel-title text-center">
+	               		<h1 class="title">{{ Voyager::setting('admin_title', 'Voyager') }}</h1>
+	               		<hr />
+	               	</div>
+	            </div>
+				<div class="main-login main-center">
+					<form class="form-horizontal" method="post" action="/login">
+             {{ csrf_field() }}
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Цахим хаяг</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Имэйл хаягаа оруулна уу"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Нууц үг</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Нууц үгээ оруулна уу"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<button type="submit" style="border-radius: 0;" class="btn btn-primary btn-block login-button">Нэвтрэх</button>
+              @if (count($errors))
+              <br/>
+               <div class="error-login">
+                   Нэвтрэх нэр эсвэл нууц үг буруу байна
+               </div>
+               <br/>
+              @endif
+              <a style="border-radius: 0; background-color: #8D909B; color:#fff" class="btn btn-block login-button" data-toggle="modal" data-target="#myModal">Төлбөр төлөх боломжууд</a>
+              <a style="border-radius: 0; background-color: #8D909B; color:#fff" class="btn btn-block login-button">Ашиглах заавар</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Төлбөрөө хэрхэн хийх вэ</h4>
           </div>
-        </div>
-      </div>
-
-    <script>
-        login_btn = document.getElementById("voyager-login-btn");
-        login_btn.addEventListener("click", function () {
-            var originalHeight = login_btn.offsetHeight;
-            login_btn.style.height = originalHeight + 'px';
-            document.querySelector('#voyager-login-btn span.login_text').style.display = 'none';
-            document.querySelector('#voyager-login-btn span.login_loader').style.display = 'block';
-        });
-    </script>
-
-</body>
+          <div class="modal-body">
+            <div class="alert-info" style="padding:10px">
+             {!! Voyager::setting('payment_info') !!}
+            </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Хаах</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    <script type="text/javascript" src="/vendor/tcg/voyager/assets/lib/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/vendor/tcg/voyager/assets/lib/js/bootstrap.min.js"></script>
+	</body>
 </html>
