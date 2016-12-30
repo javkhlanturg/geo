@@ -14,7 +14,7 @@
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <table style="width:615px; text-align: right;">
                 <tbody>
-
+                  <?php echo public_path;?>
                     <tr>
                         <th><label for="title">Зарын гарчиг:</label></th>
                         <td><input type="text" name="title" id="title" value=""></td>

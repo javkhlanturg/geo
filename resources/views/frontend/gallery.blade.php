@@ -1,5 +1,5 @@
 <div class="clearfix mb25 oh">
-  <h4 class="cat-title">Хамтран ажилдаг байгууллагууд</h4>
+    <h4 class="cat-title">Хамтран ажилладаг байгууллагууд</h4>
   <!-- jCarousel -->
   <div class="carousel-container">
     <div class="row" id="comcustlist">
