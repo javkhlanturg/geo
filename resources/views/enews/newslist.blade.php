@@ -35,7 +35,7 @@
             <span class="date"><a href="#">{{ date('m сарын d, Y',strtotime($post->created_at))}}</a></span>&nbsp;
             <span style="font-size:13px"> &nbsp; &nbsp;Үнэ: {{number_format($post->price, 2)}}₮ &nbsp; &nbsp;</span>
 
-            <a @if(!\Auth::check()) href="/login" @endif class="pull-right order"> Захиалах </a>
+            <a @if(!\Auth::check()) href="/login" @else href="/user/news/list" @endif class="pull-right order"> Захиалах </a>
           </div>
         </div>
       </div>
