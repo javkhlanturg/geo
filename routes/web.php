@@ -39,6 +39,7 @@ Route::post('/user/change/pass','LoginController@sendChangePassMail')->name('sen
 Route::post('/user/save/pass','LoginController@savePass')->name('savePass');
 Route::get('/user/change/pass/{token}','LoginController@changePassView')->name('changePassView');
 Route::post('/mvactions','PostController@action')->name('mvAction');
+Route::get('/search','PostController@search')->name('search');
 Route::get('/page/{slug}','PostController@viewPage')->name('viewPage');
 Route::get('/{slug}','PostController@postList')->name('postList');
 Route::get('/{slug}/{postid}','PostController@post')->name('viewPost');
