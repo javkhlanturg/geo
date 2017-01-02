@@ -56,7 +56,7 @@
               <ul id="zarscrolled" style="height:446px; overflow:auto">
                 @foreach($zars as $zar)
                 <li>
-                  <h3><a href="#">{{str_limit($zar->title,25)}} <div class="email" style="float:right">{{$zar->phone}}</div></a></h3>
+                  <h3><a href="{{ url('/jobs/show?id='.$zar->id)}}">{{str_limit($zar->title,25)}} <div class="email" style="float:right">{{$zar->phone}}</div></a></h3>
                   <div class="content">{{str_limit($zar->body,80)}}</div>
                    <div class="phone" style="float:right">{{$zar->address}}</div>
                 </li></hr>

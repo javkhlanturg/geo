@@ -63,7 +63,7 @@ class ZarController extends Controller
       $title = $request->input('title');
       $body = $request->input('content');
       $imageName = time().'.'.$request->image->getClientOriginalExtension();
-      $request->image->move(public_path('bus'), $imageName);
+      $request->image->move('bus', $imageName);
       $address = $request->input('address');
       $phone = $request->input('phone');
       $email = $request->input('email');
