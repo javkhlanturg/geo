@@ -13,9 +13,8 @@
   </nav>
 
   <div class="search-bar right clearfix">
-    <form action="http://www.example.com">
-      <input name="s" type="text" data-value="search" value="search">
-      <input name="submit" type="submit" value="">
+    <form action="/search" method="get">
+      <input name="s" type="text" placeholder="Хайх">
     </form>
   </div>
 </header>
