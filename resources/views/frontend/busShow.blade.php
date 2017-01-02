@@ -19,8 +19,7 @@
 @endsection
 @section('content')
 <section id="content" class="eight column row pull-left">
-  <h4 class="cat-title mb25">Бизнес зар
-  <a href="{{ url('/busA')}}" style="float: right;">Бизнес зар нэмэх<a></h4>
+  <h4 class="cat-title mb25">Бизнес зар</h4>
 
 
   <!-- Posts -->

@@ -19,8 +19,7 @@
 @endsection
 @section('content')
 <section id="content" class="eight column row pull-left">
-  <h4 class="cat-title mb25">Ажлын зар
-  <a href="{{ url('/jobs/add')}}" style="float: right;">Ажлын зар нэмэх<a></h4>
+  <h4 class="cat-title mb25">Ажлын зар</h4>
 
 
   <!-- Posts -->
@@ -47,11 +46,4 @@
 
   </section>
   </section>
-  @endsection
-  @section('javascript')
-  <script>
-  $(document).ready(function(){
-    var data = $('ul.pagination').removeClass().addClass("no-bullet");
-  })
-  </script>
   @endsection
