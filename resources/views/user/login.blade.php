@@ -93,6 +93,9 @@ input::-webkit-input-placeholder {
 	<body>
 		<div class="container">
 			<div class="row main">
+        @if(Session::has('status'))
+        <div class="alert alert-{{Session::get('status')}}" role="alert"> {{Session::get('message')}} </div>
+        @endif
 				<div class="panel-heading">
 	               <div class="panel-title text-center">
 	               		<h1 class="title">{{ Voyager::setting('admin_title', 'Voyager') }}</h1>
@@ -130,7 +133,10 @@ input::-webkit-input-placeholder {
                    Нэвтрэх нэр эсвэл нууц үг буруу байна
                </div>
                <br/>
-              @endif
+              @endif<br/>
+              <p style="text-align:right">
+              <a style="color:#fc7100; margin:10px; cursor:pointer" data-toggle="modal" data-target="#forgetPass">Нууц үгээ мартсан</a>
+              </p>
               <a style="border-radius: 0; background-color: #8D909B; color:#fff" class="btn btn-block login-button" data-toggle="modal" data-target="#myModal">Төлбөр төлөх боломжууд</a>
               <a style="border-radius: 0; background-color: #8D909B; color:#fff" class="btn btn-block login-button">Ашиглах заавар</a>
 						</div>
@@ -157,6 +163,28 @@ input::-webkit-input-placeholder {
                     </div>
                   </div>
                 </div>
+
+
+
+                <div class="modal fade" id="forgetPass" tabindex="-1" role="dialog" aria-labelledby="forgetPassLbl">
+                  <form method="post" action="{{route('sendChangePassMail')}}">
+                    {{ csrf_field() }}
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="forgetPassLbl">Нууц үгээ солих</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" required="true" id="useremail" name="useremail" style="width:100%" placeholder="Имэйл хаягаа оруулна уу">
+                    </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Болих</button>
+                                  <button type="submit" class="btn" style="border-radius: 0; color:#fff; background-color:#fc7100; border-color: #BD5800;" >Өөрчлөх</button>
+                                </div>
+                              </div>
+                            </div> </form>
+                          </div>
     <script type="text/javascript" src="/vendor/tcg/voyager/assets/lib/js/jquery.min.js"></script>
 		<script type="text/javascript" src="/vendor/tcg/voyager/assets/lib/js/bootstrap.min.js"></script>
 	</body>
